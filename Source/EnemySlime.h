@@ -19,7 +19,6 @@ public:
     //•`‰æˆ—
     void Render(ID3D11DeviceContext* dc, Shader* shader) override;
     
-    int scoreP = 0;
 
 private:
     Model* model = nullptr;
