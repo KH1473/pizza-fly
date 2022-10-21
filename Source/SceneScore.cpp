@@ -80,13 +80,11 @@ void SceneScore::Render()
             0,
             1, 1, 1, 1);
 
-        if (EnemySlime().scoreP == 1)
-        {
+
             text->textout(dc,
                 "SCORE:S",
                 200, 0, 96, 96,
                 1, 0, 0, 1);
-        }
 
     }
     
