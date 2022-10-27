@@ -68,7 +68,7 @@ void SceneGame::Initialize()
 	MP = new Sprite("Data/Sprite/MP.png");
 	Red = new Sprite("Data/Sprite/RED.png");
 
-	Back = new Sprite("Data/Sprite/Title.png");
+	Back = new Sprite("Data/Sprite/Space.png");
 
 }
 
