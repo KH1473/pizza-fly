@@ -1,15 +1,32 @@
 #include "SceneManager.h"
 
-//更新処理
+// 更新処理
 void SceneManager::Update(float elapsedTime)
 {
+    // 切替処理
+    if (nextScene != nullptr)
+    {
+        // 古いシーンを終了処理
+        Clear();
+
+        // 新しいシーンを設定
+        currentScene = nextScene;
+        nextScene = nullptr;
+
+        // 初期化してなかったら新しいシーンの初期化処理
+        if (currentScene->IsReady() == false)
+        {
+            currentScene->Initialize();
+        }
+    }
+
     if (currentScene != nullptr)
     {
         currentScene->Update(elapsedTime);
     }
 }
 
-//描画処理
+// 描画処理
 void SceneManager::Render()
 {
     if (currentScene != nullptr)
@@ -28,20 +45,10 @@ void SceneManager::Clear()
         currentScene = nullptr;
     }
 }
+
 // シーン切り替え
 void SceneManager::ChangeScene(Scene* scene)
 {
-    // 古いシーンを終了処理
-    Clear();
     // 新しいシーンを設定
-    currentScene = scene;
-
-    // 未初期化の場合は初期化処理
-    if (!currentScene->IsReady())
-    {
-        currentScene->Initialize();
-    }
-
-    // シーン初期化処理
-    //currentScene->Initialize();
+    nextScene = scene;
 }
