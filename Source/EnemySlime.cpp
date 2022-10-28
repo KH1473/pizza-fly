@@ -42,7 +42,7 @@ void EnemySlime::Update(float elapsedTime)
     //モデル行列更新
     model->UpdateTransform(transform);
 
-   EnemyMove();
+    EnemyMove();
 
 }
 
@@ -73,7 +73,6 @@ void EnemySlime::EnemyMove()
         case 2:
             if (MousePoint == 2 && ax > 950 && ax < 1100 && ay > 550 && ay < 700)
             {
-
                 MousePoint += 1;
                 ++state;
             }
