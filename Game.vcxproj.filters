@@ -177,6 +177,9 @@
     <ClInclude Include="Source\SceneScore.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="Source\ScoreDataManager.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="External\imgui\imgui.cpp">

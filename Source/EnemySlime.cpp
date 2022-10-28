@@ -7,6 +7,8 @@
 #include "SceneLoading.h"
 #include "SceneScore.h"
 
+#include "ScoreDataManager.h"
+
 //コンストラクタ
 EnemySlime::EnemySlime()
 {
@@ -137,6 +139,8 @@ void EnemySlime::EnemyHight()
         speed = 0;
 
         scaleup = 0;
+
+        ScoreDataManager::Instance().SetPos(position.y);
     }
 
 }
