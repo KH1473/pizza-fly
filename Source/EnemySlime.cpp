@@ -79,12 +79,9 @@ void EnemySlime::EnemyMove()
         case 3:
             if (MousePoint == 3 && ax > 800 && ax < 950 && ay > 550 && ay < 700)
             {
-                if (PizzaPos <= powerMin)
-                {
                     PizzaPos += Pizzaspeed;
-                }
            
-                else if (PizzaPos > powerMax)
+                if (PizzaPos > powerMax)
                 {
                     PizzaPos -= Pizzaspeed;
                     MousePoint = 0;
