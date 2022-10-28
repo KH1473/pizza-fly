@@ -7,6 +7,7 @@
 #include "SceneLoading.h"
 #include "SceneScore.h"
 #include "EnemySlime.h"
+#include "ScoreDataManager.h"
 
 // èâä˙âª
 void SceneScore::Initialize()
@@ -81,10 +82,20 @@ void SceneScore::Render()
             1, 1, 1, 1);
 
 
+        if (ScoreDataManager::Instance().GetPos() < 20.0f)
+        {
+            text->textout(dc,
+                "SCORE:A",
+                200, 0, 96, 96,
+                1, 0, 0, 1);
+        }
+        else if (ScoreDataManager::Instance().GetPos() >= 20.0f)
+        {
             text->textout(dc,
                 "SCORE:S",
                 200, 0, 96, 96,
                 1, 0, 0, 1);
+        }
 
     }
     
