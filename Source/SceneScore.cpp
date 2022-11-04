@@ -8,30 +8,31 @@
 #include "SceneScore.h"
 #include "EnemySlime.h"
 #include "ScoreDataManager.h"
+#include "PizzaConstants.h"
 
 // 初期化
 void SceneScore::Initialize()
 {
     // スプライト初期化
-    sprite = new Sprite("Data/Sprite/Score.png");
+    ScoreS = new Sprite(SCORE_SPRITE);
+    ScoreA = new Sprite(SCORE_SPRITE);
 
-    text = new Sprite("Data/Font/font1.png");
 }
 
 // 終了化
 void SceneScore::Finalize()
 {
     // スプライト終了化
-    if (sprite != nullptr)
+    if (ScoreS != nullptr)
     {
-        delete sprite;
-        sprite = nullptr;
+        delete ScoreS;
+        ScoreS = nullptr;
     }
 
-    if (text != nullptr)
+    if (ScoreA != nullptr)
     {
-        delete text;
-        text = nullptr;
+        delete ScoreA;
+        ScoreA = nullptr;
     }
 }
 
@@ -72,29 +73,25 @@ void SceneScore::Render()
     {
         float screenWidth = static_cast<float>(graphics.GetScreenWidth());
         float screenHeight = static_cast<float>(graphics.GetScreenHeight());
-        float textureWidth = static_cast<float>(sprite->GetTextureWidth());
-        float textureHeight = static_cast<float>(sprite->GetTextureHeight());
-        // タイトルスプライト描画
-        sprite->Render(dc,
-            0, 0, screenWidth, screenHeight,
-            0, 0, textureWidth, textureHeight,
-            0,
-            1, 1, 1, 1);
+        float textureWidth = static_cast<float>(ScoreS->GetTextureWidth());
+        float textureHeight = static_cast<float>(ScoreS->GetTextureHeight());
 
 
         if (ScoreDataManager::Instance().GetPos() < 20.0f)
         {
-            text->textout(dc,
-                "SCORE:A",
-                200, 0, 96, 96,
-                1, 0, 0, 1);
+            ScoreA->Render(dc,
+                0, 0, screenWidth, screenHeight,
+                0, 0, textureWidth, textureHeight,
+                0,
+                1, 1, 1, 1);
         }
         else if (ScoreDataManager::Instance().GetPos() >= 20.0f)
         {
-            text->textout(dc,
-                "SCORE:S",
-                200, 0, 96, 96,
-                1, 0, 0, 1);
+            ScoreS->Render(dc,
+                0, 0, screenWidth, screenHeight,
+                0, 0, textureWidth, textureHeight,
+                0,
+                1, 1, 1, 1);
         }
 
     }
