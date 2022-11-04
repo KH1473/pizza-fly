@@ -314,10 +314,10 @@ void SceneGame::Render()
 			}
 		}
 		
-			/*text->textout(dc,
-				ScoreDataManager::Instance().GetPos(),
+			text->textout(dc,
+				std::to_string(ScoreDataManager::Instance().GetPos()),
 				200, 0, 96, 96,
-				1, 0, 0, 1);*/
+				1, 1, 1, 1);
 	}
 
 	// 2DデバッグGUI描画
