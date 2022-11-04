@@ -24,7 +24,7 @@ public:
 
 
 private:
-    Sprite* sprite = nullptr;
-    Sprite* text = nullptr;
+    Sprite* ScoreS = nullptr;
+    Sprite* ScoreA = nullptr;
 
 };
