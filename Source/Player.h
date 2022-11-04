@@ -44,9 +44,9 @@ private:
     enum class State
     {
         Idle,
-        Move,
+        /*Move,
         Jump,
-        Land
+        Land*/
     };
 
     Model* model = nullptr;
@@ -70,19 +70,19 @@ private:
     bool InputMove(float elapsedTime);
 
     // 着地ステートへ遷移
-    void TransitionLandState();
+    //void TransitionLandState();
     // 着地ステート更新処理
-    void UpdateLandState(float elapsedTime);
+    //void UpdateLandState(float elapsedTime);
 
     //待機ステートへ遷移
     void TransitionIdleState();
-    //待機ステート更新処理
+    ///待機ステート更新処理
     void UpdateIdleState(float elapsedTime);
 
     //移動ステートへ遷移
-    void TransitionMoveState();
+    //void TransitionMoveState();
     //移動ステート更新処理
-    void UpdateMoveState(float elapsedTime);
+    //void UpdateMoveState(float elapsedTime);
 
 //protected:
     //着地した時に呼ばれる

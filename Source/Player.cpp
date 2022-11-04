@@ -42,14 +42,14 @@ void Player::Update(float elapsedTime)
     case State::Idle:UpdateIdleState(elapsedTime);
         break;
 
-    case State::Move:UpdateMoveState(elapsedTime);
-        break;
+   /* case State::Move:UpdateMoveState(elapsedTime);
+        break;*/
     
     /*case State::Jump:UpdateJumpState(elapsedTime);
         break;*/
     
-    case State::Land:UpdateLandState(elapsedTime);
-        break;
+    /*case State::Land:UpdateLandState(elapsedTime);
+        break;*/
     }
 
     //遠力処理更新
@@ -211,50 +211,50 @@ void Player::TransitionIdleState()
 //待機ステート更新処理
 void Player::UpdateIdleState(float elapsedTime)
 {
-    //移動入力処理
-    if (InputMove(elapsedTime))
-    {
-        // 移動ステートへ遷移
-        TransitionMoveState();
-    }
+    ////移動入力処理
+    //if (InputMove(elapsedTime))
+    //{
+    //    // 移動ステートへ遷移
+    //    TransitionMoveState();
+    //}
 
 }
 
 //移動ステートへ遷移
-void Player::TransitionMoveState()
-{
-    state = State::Move;
-
-    //走りアニメーション再生
-    model->PlayAnimation(Anim_Running, true);
-}
+//void Player::TransitionMoveState()
+//{
+//    state = State::Move;
+//
+//    //走りアニメーション再生
+//    model->PlayAnimation(Anim_Running, true);
+//}
 
 //移動ステート更新処理
-void Player::UpdateMoveState(float elapsedTime)
-{
-    //移動入力処理
-    if (!InputMove(elapsedTime))
-    {
-        TransitionIdleState();
-    }
-
-}
+//void Player::UpdateMoveState(float elapsedTime)
+//{
+//    //移動入力処理
+//    if (!InputMove(elapsedTime))
+//    {
+//        TransitionIdleState();
+//    }
+//
+//}
 
 //着地ステートへ遷移
-void Player::TransitionLandState()
-{
-    state = State::Land;
+//void Player::TransitionLandState()
+//{
+//    state = State::Land;
+//
+//    //着地アニメーション再生
+//    model->PlayAnimation(Anim_Landing, false);
+//}
 
-    //着地アニメーション再生
-    model->PlayAnimation(Anim_Landing, false);
-}
-
-void Player::UpdateLandState(float elapsedTime)
-{
-    // 着地アニメーション終了後
-    if (!model->IsPlayAnimation())
-    {
-        // 待機ステートへ遷移
-        TransitionIdleState();
-    }
-}
+//void Player::UpdateLandState(float elapsedTime)
+//{
+//    // 着地アニメーション終了後
+//    if (!model->IsPlayAnimation())
+//    {
+//        // 待機ステートへ遷移
+//        TransitionIdleState();
+//    }
+//}
