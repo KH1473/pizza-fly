@@ -72,6 +72,8 @@ void SceneGame::Initialize()
 
 	Back = new Sprite(GAME_Back);
 
+	text = new Sprite("Data/Font/font1.png");
+
 }
 
 // èIóπâª
@@ -126,6 +128,12 @@ void SceneGame::Finalize()
 	{
 		delete Back;
 		Back = nullptr;
+	}
+
+	if (text != nullptr)
+	{
+		delete text;
+		text = nullptr;
 	}
 }
 

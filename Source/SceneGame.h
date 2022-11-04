@@ -50,4 +50,6 @@ private:
 
 	Sprite* Back = nullptr;
 
+	Sprite* text = nullptr;
+
 };
