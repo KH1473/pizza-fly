@@ -117,21 +117,21 @@ DirectX::XMFLOAT3 Player::GetMoveVec() const
 
 
 //移動入力処理
-bool Player::InputMove(float elapsedTime)
-{
-    //進行ベクトル
-    DirectX::XMFLOAT3 moveVec = GetMoveVec();
-
-    //移動処理
-    Move(moveVec.x, moveVec.z, moveSpeed);
-
-    //旋回処理
-    Turn(elapsedTime, moveVec.x, moveVec.z, turnSpeed);
-
-    //進行ベクトルがゼロベクトルでない場合は入力された
-    return moveVec.x != 0.0f || moveVec.y != 0.0f || moveVec.z != 0.0f;
-    
-} 
+//bool Player::InputMove(float elapsedTime)
+//{
+//    //進行ベクトル
+//    DirectX::XMFLOAT3 moveVec = GetMoveVec();
+//
+//    //移動処理
+//    Move(moveVec.x, moveVec.z, moveSpeed);
+//
+//    //旋回処理
+//    Turn(elapsedTime, moveVec.x, moveVec.z, turnSpeed);
+//
+//    //進行ベクトルがゼロベクトルでない場合は入力された
+//    return moveVec.x != 0.0f || moveVec.y != 0.0f || moveVec.z != 0.0f;
+//    
+//} 
 
 //描画処理
 void Player::Render(ID3D11DeviceContext* dc, Shader* shader)

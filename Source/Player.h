@@ -67,7 +67,7 @@ private:
 private:
     
     //移動入力処理
-    bool InputMove(float elapsedTime);
+    //bool InputMove(float elapsedTime);
 
     // 着地ステートへ遷移
     //void TransitionLandState();

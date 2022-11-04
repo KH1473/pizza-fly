@@ -17,9 +17,9 @@ void SceneGame::Initialize()
 {
 	//ステージ初期化
 	//stage = new Stage();
-	/*StageManager& stageManager = StageManager::Instance();
+	StageManager& stageManager = StageManager::Instance();
 	StageMain* stageMain = new StageMain();
-	stageManager.Register(stageMain);*/
+	stageManager.Register(stageMain);
 
 	/*StageMoveFloor* stageMoveFloor = new StageMoveFloor();
 	stageMoveFloor->SetStartPoint(DirectX::XMFLOAT3(0, 1, 3));
@@ -93,7 +93,7 @@ void SceneGame::Finalize()
 		delete stage;
 		stage = nullptr;
 	}*/
-	//StageManager::Instance().Clear();
+	StageManager::Instance().Clear();
 
 	//プレイヤー終了化
 	if (player != nullptr)
@@ -150,7 +150,7 @@ void SceneGame::Update(float elapsedTime)
 
 	//ステージ更新処理
 	//stage->Update(elapsedTime);
-	//StageManager::Instance().Update(elapsedTime);
+	StageManager::Instance().Update(elapsedTime);
 
 	//プレイヤー更新処理
 	player->Update(elapsedTime);
@@ -233,7 +233,7 @@ void SceneGame::Render()
 		shader->Begin(dc, rc);
 		//ステージ描画
 		//stage->Render(dc, shader);
-		//StageManager::Instance().Render(dc, shader);
+		StageManager::Instance().Render(dc, shader);
 
 		//エネミー描画
 		EnemyManager::Instance().Render(dc, shader);
