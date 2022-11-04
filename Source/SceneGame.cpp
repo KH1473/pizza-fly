@@ -9,6 +9,7 @@
 #include "StageMain.h"
 #include "StageMoveFloor.h"
 
+#include "ScoreDataManager.h"
 #include "PizzaConstants.h"
 
 // 初期化
@@ -312,6 +313,11 @@ void SceneGame::Render()
 					1, 1, 1, 1);
 			}
 		}
+		
+			/*text->textout(dc,
+				ScoreDataManager::Instance().GetPos(),
+				200, 0, 96, 96,
+				1, 0, 0, 1);*/
 	}
 
 	// 2DデバッグGUI描画
