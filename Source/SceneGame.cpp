@@ -9,6 +9,8 @@
 #include "StageMain.h"
 #include "StageMoveFloor.h"
 
+#include "PizzaConstants.h"
+
 // 初期化
 void SceneGame::Initialize()
 {
@@ -65,10 +67,10 @@ void SceneGame::Initialize()
 	//ゲージスプライト
 	//gauge = new Sprite();
 
-	MP = new Sprite("Data/Sprite/MP.png");
-	Red = new Sprite("Data/Sprite/RED.png");
+	MP = new Sprite(GAME_MP);
+	Red = new Sprite(GAME_Red);
 
-	Back = new Sprite("Data/Sprite/Space.png");
+	Back = new Sprite(GAME_Back);
 
 }
 

@@ -9,12 +9,14 @@
 
 #include "ScoreDataManager.h"
 
+#include "PizzaConstants.h"
+
 //コンストラクタ
 EnemySlime::EnemySlime()
 {
     //model = new Model("Data/Model/Pizza/Pizza.mdl");
     //model = new Model("Data/Model/Pizza/RealPizza.mdl");
-    model = new Model("Data/Model/PIZZA/PIZZA.mdl");
+    model = new Model(PIZZAMODEL);
 
     //モデルが大きいのでスケーリング
     scale.x = scale.y = scale.z = 0.001f;
