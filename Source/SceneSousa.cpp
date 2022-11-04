@@ -6,16 +6,16 @@
 #include "SceneLoading.h"
 #include "SceneSousa.h"
 
+#include "PizzaConstants.h"
+
 void SceneSousa::Initialize()
 {
     // スプライト初期化
-    sprite = new Sprite("Data/Sprite/sousa.png");
+    sprite = new Sprite(SOUSA_SPRITE);
 
-    SSMP = new Sprite("Data/Sprite/MP.png");
-    SSRed = new Sprite("Data/Sprite/RED.png");
-
-    //Mark = new Sprite("Data/Sprite/mark.png");
-    Mark = new Sprite("Data/Sprite/mark2.png");
+    SSMP = new Sprite(SOUSA_SSMP);
+    SSRed = new Sprite(SOUSA_SSRed);
+    Mark = new Sprite(SOUSA_SSMark);
 
 }
 

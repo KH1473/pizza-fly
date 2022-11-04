@@ -3,12 +3,13 @@
 #include "SceneLoading.h"
 #include "SceneManager.h"
 #include <thread>
+#include "PizzaConstants.h"
 
 //初期化
 void SceneLoading::Initialize()
 {
     //スプライト初期化
-    sprite = new Sprite("Data/Sprite/LoadingIcon.png");
+    sprite = new Sprite(LOADING_SPRITE);
 
     //スレッド開始
     std::thread thread(LoadingThread, this);
