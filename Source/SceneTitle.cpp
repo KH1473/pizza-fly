@@ -6,11 +6,13 @@
 #include "SceneLoading.h"
 #include "SceneSousa.h"
 
+#include "PizzaConstants.h"
+
 // 初期化
 void SceneTitle::Initialize()
 {
     // スプライト初期化
-    sprite = new Sprite("Data/Sprite/Title.png");
+    sprite = new Sprite(TITLE_SPRITE);
 }
 
 // 終了化
