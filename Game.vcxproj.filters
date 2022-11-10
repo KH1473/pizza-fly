@@ -180,6 +180,9 @@
     <ClInclude Include="Source\ScoreDataManager.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="Source\PizzaScore.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="External\imgui\imgui.cpp">
@@ -303,6 +306,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\SceneScore.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PizzaScore.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

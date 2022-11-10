@@ -1,18 +1,33 @@
 #include "Graphics/Graphics.h"
-#include "Graphics/Sprite.h"
 #include "SceneTitle.h"
-#include "SceneGame.h"
-#include "SceneManager.h"
-#include "Input/Input.h"
-#include "SceneLoading.h"
-#include "SceneScore.h"
+#include "Graphics/Sprite.h"
 #include "EnemySlime.h"
+#include "Input/Input.h"
+#include "Camera.h"
+#include "SceneManager.h"
+#include "SceneScore.h"
 #include "ScoreDataManager.h"
+
 #include "PizzaConstants.h"
 
 // 初期化
 void SceneScore::Initialize()
 {
+    //カメラ初期設定
+    Graphics& graphics = Graphics::Instance();
+    Camera& camera = Camera::Instance();
+    camera.SetLookAt(
+        DirectX::XMFLOAT3(0, 10, -10),
+        DirectX::XMFLOAT3(0, 0, 0),
+        DirectX::XMFLOAT3(0, 1, 0)
+    );
+    camera.SetPerspectiveFov(
+        DirectX::XMConvertToRadians(45),
+        graphics.GetScreenWidth() / graphics.GetScreenHeight(),
+        0.1f,
+        1000.0f
+    );
+
     // スプライト初期化
     ScoreS = new Sprite(SCORE_SPRITE);
     ScoreA = new Sprite(SCORE_SPRITE);
@@ -39,22 +54,25 @@ void SceneScore::Finalize()
 // 更新処理
 void SceneScore::Update(float elapsedTime)
 {
-    GamePad& gamePad = Input::Instance().GetGamePad();
-    Mouse& gameMouse = Input::Instance().GetMouse();
 
-    //何かボタンを押したらタイトルシーンへ切り替え
-    const GamePadButton anyButton =
-        GamePad::BTN_A
-        | GamePad::BTN_B
-        | GamePad::BTN_X
-        | GamePad::BTN_Y;
-
-    // なにかボタンを押したらタイトルシーンへ切り替え
-    if (gamePad.GetButtonDown() & anyButton || gameMouse.GetButtonDown() & Mouse::BTN_LEFT)
+    //シーン操作
     {
-        SceneManager::Instance().ChangeScene(new SceneTitle);
-    }
+        GamePad& gamePad = Input::Instance().GetGamePad();
+        Mouse& gameMouse = Input::Instance().GetMouse();
 
+        //何かボタンを押したらタイトルシーンへ切り替え
+        const GamePadButton anyButton =
+            GamePad::BTN_A
+            | GamePad::BTN_B
+            | GamePad::BTN_X
+            | GamePad::BTN_Y;
+
+        // なにかボタンを押したらタイトルシーンへ切り替え
+        if (gamePad.GetButtonDown() & anyButton || gameMouse.GetButtonDown() & Mouse::BTN_LEFT)
+        {
+            SceneManager::Instance().ChangeScene(new SceneTitle);
+        }
+    }
 }
 
 // 描画処理
@@ -95,5 +113,7 @@ void SceneScore::Render()
         }
 
     }
-    
+
+
+
 }

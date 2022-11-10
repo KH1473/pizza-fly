@@ -10,6 +10,9 @@
 
 void SceneSousa::Initialize()
 {
+
+    SceneManager::Instance().SetSceneType(SceneType::Tutorial);
+
     // スプライト初期化
     sprite = new Sprite(SOUSA_SPRITE);
 
@@ -55,24 +58,20 @@ void SceneSousa::Update(float elapsedTime)
     constexpr float speed = 180;
     MarkAngle += speed * elapsedTime;
 
-     Mouse& gameMouse = Input::Instance().GetMouse();
+    Mouse& gameMouse = Input::Instance().GetMouse();
 
-     int ax = gameMouse.GetPositionX();
-     int ay = gameMouse.GetPositionY();
+    int ax = gameMouse.GetPositionX();
+    int ay = gameMouse.GetPositionY();
 
     // なにかボタンを押したらローディングシーンを挟んでゲームシーンへ切り替え
     if (gameMouse.GetButtonDown() & Mouse::BTN_LEFT)
-    {   
+    {
         if (ax >= 1125 && ax <= 1270 && ay >= 638 && ay <= 715)
         {
             SceneManager::Instance().ChangeScene(new SceneLoading(new SceneGame));
         }
     }
 
-    /*else if (gameMouse.GetButtonDown() & Mouse::BTN_RIGHT)
-    {
-        SceneManager::Instance().ChangeScene(new SceneTitle);
-    }*/
 }
 
 //描画処理

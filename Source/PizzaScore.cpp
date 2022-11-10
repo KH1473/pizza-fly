@@ -1,31 +1,25 @@
 #include "Graphics/Graphics.h"
-#include "SceneGame.h"
+#include "Graphics/Sprite.h"
 #include "Camera.h"
+
+#include "SceneManager.h"
+#include "SceneGame.h"
+#include "PizzaScore.h"
+#include "SceneTitle.h"
+
 #include "EnemyManager.h"
 #include "EnemySlime.h"
 #include "EffectManager.h"
 #include "Input/Input.h"
-#include "StageManager.h"
-#include "StageMain.h"
-
-#include "PizzaConstants.h"
 
 #include "ScoreDataManager.h"
 
-#include "SceneManager.h"
+#include "PizzaConstants.h"
 
 // 初期化
-void SceneGame::Initialize()
+void PizzaScore::Initialize()
 {
-	SceneManager::Instance().SetSceneType(SceneType::Main);
-
-	//ステージ初期化
-	StageManager& stageManager = StageManager::Instance();
-	StageMain* stageMain = new StageMain();
-	stageManager.Register(stageMain);
-
-	//プレイヤー初期化
-	player = new Player();
+	SceneManager::Instance().SetSceneType(SceneType::Score);
 
 	//カメラ初期設定
 	Graphics& graphics = Graphics::Instance();
@@ -53,32 +47,16 @@ void SceneGame::Initialize()
 	enemyManager.Register(slime);
 
 
-	//ゲージスプライト
-	//gauge = new Sprite();
+	// スプライト初期化
+	ScoreS = new Sprite(SCORE_SPRITE);
+	ScoreA = new Sprite(SCORE_SPRITE);
+	Back = new Sprite(SCORE_SPRITE);
 
-	MP = new Sprite(GAME_MP);
-	Red = new Sprite(GAME_Red);
-
-	Back = new Sprite(GAME_Back);
-	
-	// スコア画面で表示されるピザのファイル名の設定
-	ScoreDataManager::Instance().SetPizzaModelFilename(KOGE_MODEL);
 }
 
 // 終了化
-void SceneGame::Finalize()
+void PizzaScore::Finalize()
 {
-
-	//ステージ終了化
-	StageManager::Instance().Clear();
-
-	//プレイヤー終了化
-	if (player != nullptr)
-	{
-		delete player;
-		player = nullptr;
-	}
-
 	//カメラコントローラー終了化
 	if (cameraController != nullptr)
 	{
@@ -89,17 +67,18 @@ void SceneGame::Finalize()
 	//エネミー終了化
 	EnemyManager::Instance().Clear();
 
-	// マウススプライト終了化
-	if (MP != nullptr)
+
+	// スプライト終了化
+	if (ScoreS != nullptr)
 	{
-		delete MP;
-		MP = nullptr;
+		delete ScoreS;
+		ScoreS = nullptr;
 	}
 
-	if (Red != nullptr)
+	if (ScoreA != nullptr)
 	{
-		delete Red;
-		Red = nullptr;
+		delete ScoreA;
+		ScoreA = nullptr;
 	}
 
 	if (Back != nullptr)
@@ -110,7 +89,7 @@ void SceneGame::Finalize()
 }
 
 // 更新処理
-void SceneGame::Update(float elapsedTime)
+void PizzaScore::Update(float elapsedTime)
 {
 	//カメラコントローラー更新処理
 	DirectX::XMFLOAT3 target = slime->GetPosition();
@@ -118,22 +97,35 @@ void SceneGame::Update(float elapsedTime)
 	cameraController->SetTarget(target);
 	cameraController->Update(elapsedTime);
 
-	//ステージ更新処理
-	StageManager::Instance().Update(elapsedTime);
-
-	//プレイヤー更新処理
-	player->Update(elapsedTime);
-
 	//エネミー更新処理
 	EnemyManager::Instance().Update(elapsedTime);
 
 	//エフェクト更新処理
 	EffectManager::Instance().Update(elapsedTime);
 
+	//シーン操作
+	{
+		//GamePad& gamePad = Input::Instance().GetGamePad();
+		//Mouse& gameMouse = Input::Instance().GetMouse();
+
+		////何かボタンを押したらタイトルシーンへ切り替え
+		//const GamePadButton anyButton =
+		//	GamePad::BTN_A
+		//	| GamePad::BTN_B
+		//	| GamePad::BTN_X
+		//	| GamePad::BTN_Y;
+
+		//// なにかボタンを押したらタイトルシーンへ切り替え
+		//if (gamePad.GetButtonDown() & anyButton || gameMouse.GetButtonDown() & Mouse::BTN_LEFT)
+		//{
+		//	SceneManager::Instance().ChangeScene(new SceneTitle);
+		//}
+	}
+
 }
 
 // 描画処理
-void SceneGame::Render()
+void PizzaScore::Render()
 {
 	Graphics& graphics = Graphics::Instance();
 	ID3D11DeviceContext* dc = graphics.GetDeviceContext();
@@ -171,20 +163,39 @@ void SceneGame::Render()
 			0, 0, BtextureWidth, BtextureHeight,
 			0,
 			1, 1, 1, 1);
+
+		/*float screenWidth = static_cast<float>(graphics.GetScreenWidth());
+		float screenHeight = static_cast<float>(graphics.GetScreenHeight());
+		float textureWidth = static_cast<float>(ScoreS->GetTextureWidth());
+		float textureHeight = static_cast<float>(ScoreS->GetTextureHeight());
+
+
+		if (ScoreDataManager::Instance().GetPos() < 20.0f)
+		{
+			ScoreA->Render(dc,
+				0, 0, screenWidth, screenHeight,
+				0, 0, textureWidth, textureHeight,
+				0,
+				1, 1, 1, 1);
+		}
+		else if (ScoreDataManager::Instance().GetPos() >= 20.0f)
+		{
+			ScoreS->Render(dc,
+				0, 0, screenWidth, screenHeight,
+				0, 0, textureWidth, textureHeight,
+				0,
+				1, 1, 1, 1);
+		}*/
 	}
 
 	// 3Dモデル描画
 	{
 		Shader* shader = graphics.GetShader();
 		shader->Begin(dc, rc);
-		//ステージ描画
-		StageManager::Instance().Render(dc, shader);
-
 		//エネミー描画
 		EnemyManager::Instance().Render(dc, shader);
 
-		//プレイヤー描画
-		player->Render(dc, shader);
+
 		shader->End(dc);
 
 	}
@@ -194,66 +205,13 @@ void SceneGame::Render()
 		EffectManager::Instance().Render(rc.view, rc.projection);
 	}
 
-	// 3Dデバッグ描画
-	{
-		// ラインレンダラ描画実行
-		graphics.GetLineRenderer()->Render(dc, rc.view, rc.projection);
+	//// 3Dデバッグ描画
+	//{
+	//	// ラインレンダラ描画実行
+	//	graphics.GetLineRenderer()->Render(dc, rc.view, rc.projection);
 
-		// デバッグレンダラ描画実行
-		graphics.GetDebugRenderer()->Render(dc, rc.view, rc.projection);
-	}
-
-	// 2Dスプライト描画
-	{
-		float textureWidth = static_cast<float>(MP->GetTextureWidth());
-		float textureHeight = static_cast<float>(MP->GetTextureHeight());
-
-		float RedWidth = static_cast<float>(Red->GetTextureWidth());
-		float RedHeight = static_cast<float>(Red->GetTextureHeight());
-
-		//MP描画
-		MP->Render(dc,
-			800, 400, textureWidth, textureHeight,
-			0, 0, textureWidth, textureHeight,
-			0,
-			1, 1, 1, 1);
-
-		if (mouse.GetButton() & Mouse::BTN_LEFT)
-		{
-			if (ax >= 800 && ax <= 950 && ay >= 400 && ay <= 550)
-			{
-				Red->Render(dc,
-					800, 400, RedWidth, RedHeight,
-					0, 0, RedWidth, RedHeight,
-					0,
-					1, 1, 1, 1);
-			}
-			else if (ax > 950 && ax < 1100 && ay > 400 && ay < 550)
-			{
-				Red->Render(dc,
-					950, 400, RedWidth, RedHeight,
-					0, 0, RedWidth, RedHeight,
-					0,
-					1, 1, 1, 1);
-			}
-			else if (ax > 950 && ax < 1100 && ay > 550 && ay < 700)
-			{
-				Red->Render(dc,
-					950, 550, RedWidth, RedHeight,
-					0, 0, RedWidth, RedHeight,
-					0,
-					1, 1, 1, 1);
-			}
-			else if (ax > 800 && ax < 950 && ay > 550 && ay < 700)
-			{
-				Red->Render(dc,
-					800, 550, RedWidth, RedHeight,
-					0, 0, RedWidth, RedHeight,
-					0,
-					1, 1, 1, 1);
-			}
-		}
-	}
+	//	// デバッグレンダラ描画実行
+	//	graphics.GetDebugRenderer()->Render(dc, rc.view, rc.projection);
+	//}
 
 }
-
