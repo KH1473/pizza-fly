@@ -31,6 +31,7 @@
 
 //SceneScore.cpp
 #define KOGE_MODEL "Data/Model/pizzamodel/koge/koge.mdl"
+#define NAMAYAKE_MODEL "Data/Model/pizzamodel/namayake/namayake.mdl"
 #define SCORE_SPRITE "Data/Sprite/Score.png"
 #define SCORE_TEXT "Data/Font/font1.png"
 
