@@ -2,6 +2,13 @@
 
 #include "Scene.h"
 
+enum class SceneType : int
+{
+	Title,
+	Tutorial,
+	Main,
+	Score,
+};
 
 //シーンマネージャー
 class SceneManager
@@ -30,8 +37,13 @@ public:
 	//シーン切り替え
 	void ChangeScene(Scene* scene);
 
+	void SetSceneType(SceneType sceneType) { type = sceneType; }
+	SceneType GetSceneType() { return type; }
+
 private:
 	Scene* currentScene = nullptr;
 	Scene* nextScene = nullptr;
+
+	SceneType type = SceneType::Title;
 
 };

@@ -8,11 +8,18 @@
 
 #include "PizzaConstants.h"
 
+#include "ScoreDataManager.h"
+
 // 初期化
 void SceneTitle::Initialize()
 {
+    SceneManager::Instance().SetSceneType(SceneType::Title);
+
     // スプライト初期化
     sprite = new Sprite(TITLE_SPRITE);
+
+    // ゲーム画面で表示されるピザのファイル名の設定
+    ScoreDataManager::Instance().SetPizzaModelFilename(PIZZAMODEL);
 }
 
 // 終了化

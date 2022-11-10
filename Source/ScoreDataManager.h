@@ -6,8 +6,11 @@ private:
     ScoreDataManager() {}
     ~ScoreDataManager() {}
 
+    // スコアとなるピザの位置
     float PizzaPos;
-    DirectX::XMFLOAT3 PizzaScale;
+
+    // 利用されるピザのモデルファイル名
+    std::string pizzaModelFilename;
 public:
     static ScoreDataManager& Instance() {
         static ScoreDataManager inst;
@@ -16,6 +19,7 @@ public:
 
     void SetPos(float pizzaPos) { PizzaPos = pizzaPos; }
     float GetPos() { return PizzaPos; }
-    void SetScale(DirectX::XMFLOAT3 pizzaScale) { PizzaScale = pizzaScale; }
-    DirectX::XMFLOAT3 GetScalse() { return PizzaScale; }
+
+    void SetPizzaModelFilename(std::string n) { pizzaModelFilename = n; }
+    std::string GetPizzaModelFilename() { return pizzaModelFilename; }
 };

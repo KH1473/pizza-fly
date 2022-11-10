@@ -2,6 +2,7 @@
 #include "Camera.h"
 #include "Input/Input.h"
 
+#include "SceneManager.h"
 
 //更新処理
 void CameraController::Update(float elapsedTime)
@@ -15,6 +16,10 @@ void CameraController::Update(float elapsedTime)
     int mouseX = gameMouse.GetPositionX();
     int mouseY = gameMouse.GetPositionY();
 
+    SceneType sceneType = SceneManager::Instance().GetSceneType();
+
+    if (sceneType == SceneType::Main)
+    {
     switch (cameracount)
     {
     case 0:
@@ -49,6 +54,26 @@ void CameraController::Update(float elapsedTime)
     case 1:
         cameracount = 1;
         break;
+    }
+    else if (sceneType == SceneType::Score)
+    {
+        if (ax >= 0.0f)
+        {
+            ax -= 1.0f;
+        }
+        else if (ax <= -10.0f)
+        {
+            ax += 1.0f;
+        }
+
+        if (ay <= 0.0f)
+        {
+            ay += 0.5f;
+        }
+        else if (ay >= 5.0f)
+        {
+            ay -= 0.5f;
+        }
     }
 
     //カメラの回転速度

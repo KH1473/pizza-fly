@@ -8,6 +8,10 @@
   //DEBUG_EFFECT以下の" "の中身を変えると違うものを呼び出せます
   //参考に"Data/Effect/03_Hanmado01/attack.efk"を入れてます
 
+//StageMain.cpp
+#define STAGE_MODEL "Data/Model/ExampleStage/ExampleStage.mdl"  //ステージモデル
+#define STAGE_OTHER_ERIA "Data/Model/Cylinder/Cylinder.mdl"  //ステージモデル
+
 //SceneTitle.cpp
 #define TITLE_SPRITE "Data/Sprite/Title.png" //タイトル描画
 
@@ -26,6 +30,7 @@
 #define GAME_Back "Data/Sprite/Space.png"
 
 //SceneScore.cpp
+#define KOGE_MODEL "Data/Model/pizzamodel/koge/koge.mdl"
 #define SCORE_SPRITE "Data/Sprite/Score.png"
 #define SCORE_TEXT "Data/Font/font1.png"
 
