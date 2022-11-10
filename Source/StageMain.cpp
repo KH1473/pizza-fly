@@ -1,17 +1,23 @@
 #include "StageMain.h"
 
+#include "PizzaConstants.h"
+
 //コンストラクタ
 StageMain::StageMain()
 {
-    
     //ステージモデルを読み込む
-    model = new Model("Data/Model/ExampleStage/ExampleStage.mdl");
+    model = new Model(STAGE_MODEL);
+
+    cylinder = new Model(STAGE_OTHER_ERIA);
+
 }
 
 StageMain::~StageMain()
 {
     //ステージモデルの破棄
     delete model;
+
+    delete cylinder;
 }
 
 //更新処理
@@ -25,6 +31,8 @@ void StageMain::Render(ID3D11DeviceContext* dc, Shader* shader)
 {
     //シェーダーにモデルを描画してもらう
     shader->Draw(dc, model);
+
+    shader->Draw(dc, cylinder);
 }
 
 // レイキャスト

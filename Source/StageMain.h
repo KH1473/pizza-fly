@@ -7,7 +7,7 @@
 class StageMain : public Stage
 {
 public:
- 
+
     StageMain();
     ~StageMain()override;
 
@@ -22,4 +22,6 @@ public:
 
 private:
     Model* model = nullptr;
+
+    Model* cylinder = nullptr;
 };
