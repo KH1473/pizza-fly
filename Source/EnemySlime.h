@@ -29,10 +29,10 @@ private:
     //高さの最小値
     float powerMin = 0.0f;
     //高さの最大値
-    float powerMax = 30.0f;
+    float powerMax = 1000.0f;
 
     //1周あたりに加算する高さの大きさ
-    float Pizzaspeed = 5.0f;
+    float Pizzaspeed = 1.5f;
 
     //スケール増加
     float scaleup = 0.0001f;
