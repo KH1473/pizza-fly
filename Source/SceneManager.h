@@ -2,6 +2,7 @@
 
 #include "Scene.h"
 
+
 //シーンマネージャー
 class SceneManager
 {

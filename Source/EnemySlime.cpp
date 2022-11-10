@@ -115,6 +115,7 @@ void EnemySlime::EnemyMove()
     //ƒsƒU‚ð”ò‚Î‚·
     if (!(gameMouse.GetButton() & Mouse::BTN_LEFT))
     {
+        ScoreDataManager::Instance().SetScale(scale);
         EnemyHight();
     }
 
