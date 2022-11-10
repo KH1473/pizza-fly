@@ -8,7 +8,7 @@
 //更新処理
 void CameraController::Update(float elapsedTime)
 {
-
+   
     Mouse& gameMouse = Input::Instance().GetMouse();
 
     float ax = 0.0f;
@@ -25,36 +25,36 @@ void CameraController::Update(float elapsedTime)
         {
         case 0:
 
-            if (800 <= mouseX && mouseX < 1100 && mouseY >= 400 && mouseY < 700)
-            {
-                if (gameMouse.GetButton() & Mouse::BTN_LEFT)
+                if (800 <= mouseX && mouseX < 1100 && mouseY >= 400 && mouseY < 700)
                 {
+                    if (gameMouse.GetButton() & Mouse::BTN_LEFT)
+                    {
 
-                    if (ax >= 0.0f)
-                    {
-                        ax -= 1.0f;
-                    }
-                    else if (ax <= -10.0f)
-                    {
-                        ax += 1.0f;
-                    }
+                        if (ax >= 0.0f)
+                        {
+                            ax -= 1.0f;
+                        }
+                        else if (ax <= -10.0f)
+                        {
+                            ax += 1.0f;
+                        }
 
-                    if (ay <= 0.0f)
-                    {
-                        ay += 0.5f;
-                    }
-                    else if (ay >= 5.0f)
-                    {
-                        ay -= 0.5f;
-                    }
+                        if (ay <= 0.0f)
+                        {
+                            ay += 0.5f;
+                        }
+                        else if (ay >= 5.0f)
+                        {
+                            ay -= 0.5f;
+                        }
 
+                    }
+                    else if (gameMouse.GetButtonUp() & Mouse::BTN_LEFT)
+                    {
+                        cameracount++;
+                    }
                 }
-                else if (gameMouse.GetButtonUp() & Mouse::BTN_LEFT)
-                {
-                    cameracount++;
-                }
-            }
-
+            
             break;
         case 1:
             cameracount = 1;
@@ -84,7 +84,7 @@ void CameraController::Update(float elapsedTime)
 
     //カメラの回転速度
     float speed = rollSpeed * elapsedTime;
-
+   
     //スティックの入力値に合わせてX軸とY軸を回転
     angle.x += ay * speed;
     angle.y += ax * speed;
@@ -92,7 +92,7 @@ void CameraController::Update(float elapsedTime)
     //X軸のカメラ回転を制限
     if (angle.x >= maxAngleX)
     {
-        angle.x = maxAngleX;
+        angle.x = maxAngleX;   
     }
     if (angle.x <= minAngleX)
     {
@@ -111,7 +111,7 @@ void CameraController::Update(float elapsedTime)
     //カメラ回転値を回転行列に変換
     DirectX::XMMATRIX Transform;
     Transform = { DirectX::XMMatrixRotationRollPitchYaw(angle.x, angle.y, angle.z) };
-
+    
     //回転行列から前方向ベクトルを取り出す
     DirectX::XMVECTOR Front = Transform.r[2];
     DirectX::XMFLOAT3 front;

@@ -24,4 +24,6 @@ private:
     float               minAngleX = DirectX::XMConvertToRadians(-45);
 
     int                 cameracount = 0;
+
+    int type;
 };

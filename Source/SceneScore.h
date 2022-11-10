@@ -24,6 +24,7 @@ public:
 
 
 private:
+   
     Sprite* ScoreS = nullptr;
     Sprite* ScoreA = nullptr;
 

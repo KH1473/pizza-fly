@@ -4,6 +4,8 @@
 #include "EnemySlime.h"
 #include "Input/Input.h"
 #include "Camera.h"
+//#include "SceneGame.h"
+//#include "SceneLoading.h"
 #include "SceneManager.h"
 #include "SceneScore.h"
 #include "ScoreDataManager.h"
@@ -114,6 +116,6 @@ void SceneScore::Render()
 
     }
 
-
+    
 
 }

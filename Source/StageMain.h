@@ -7,7 +7,7 @@
 class StageMain : public Stage
 {
 public:
-
+ 
     StageMain();
     ~StageMain()override;
 

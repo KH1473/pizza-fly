@@ -17,7 +17,7 @@
 EnemySlime::EnemySlime()
 {
     model = new Model(ScoreDataManager::Instance().GetPizzaModelFilename().c_str());
-
+    
     //model = new Model(KOGE_MODEL);
     SceneType sceneType = SceneManager::Instance().GetSceneType();
 
@@ -41,7 +41,7 @@ EnemySlime::EnemySlime()
 EnemySlime::~EnemySlime()
 {
     delete model;
-
+    
 }
 
 //更新処理
@@ -55,8 +55,8 @@ void EnemySlime::Update(float elapsedTime)
 
     //モデル行列更新
     model->UpdateTransform(transform);
-
-    EnemyMove();
+    
+   EnemyMove();
 
 }
 

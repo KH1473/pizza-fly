@@ -76,7 +76,7 @@ private:
 
     //待機ステートへ遷移
     void TransitionIdleState();
-    ///待機ステート更新処理
+    //待機ステート更新処理
     void UpdateIdleState(float elapsedTime);
 
     //移動ステートへ遷移

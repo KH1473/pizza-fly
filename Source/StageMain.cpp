@@ -9,7 +9,7 @@ StageMain::StageMain()
     model = new Model(STAGE_MODEL);
 
     cylinder = new Model(STAGE_OTHER_ERIA);
-
+    
 }
 
 StageMain::~StageMain()

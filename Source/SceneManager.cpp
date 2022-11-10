@@ -1,9 +1,8 @@
 #include "SceneManager.h"
 
-// 更新処理
+//更新処理
 void SceneManager::Update(float elapsedTime)
 {
-    // 切替処理
     if (nextScene != nullptr)
     {
         // 古いシーンを終了処理
@@ -13,7 +12,7 @@ void SceneManager::Update(float elapsedTime)
         currentScene = nextScene;
         nextScene = nullptr;
 
-        // 初期化してなかったら新しいシーンの初期化処理
+        //初期化してなかったら新しいシーンの初期化処理
         if (currentScene->IsReady() == false)
         {
             currentScene->Initialize();
@@ -26,7 +25,7 @@ void SceneManager::Update(float elapsedTime)
     }
 }
 
-// 描画処理
+//描画処理
 void SceneManager::Render()
 {
     if (currentScene != nullptr)
@@ -45,7 +44,6 @@ void SceneManager::Clear()
         currentScene = nullptr;
     }
 }
-
 // シーン切り替え
 void SceneManager::ChangeScene(Scene* scene)
 {

@@ -34,22 +34,12 @@ Player::~Player()
 
 //更新処理
 void Player::Update(float elapsedTime)
-{
-    
+{  
     //ステート毎の処理
     switch (state)
     {
     case State::Idle:UpdateIdleState(elapsedTime);
         break;
-
-   /* case State::Move:UpdateMoveState(elapsedTime);
-        break;*/
-    
-    /*case State::Jump:UpdateJumpState(elapsedTime);
-        break;*/
-    
-    /*case State::Land:UpdateLandState(elapsedTime);
-        break;*/
     }
 
     //遠力処理更新
@@ -120,16 +110,16 @@ DirectX::XMFLOAT3 Player::GetMoveVec() const
 //bool Player::InputMove(float elapsedTime)
 //{
 //    //進行ベクトル
-//    DirectX::XMFLOAT3 moveVec = GetMoveVec();
+//    //DirectX::XMFLOAT3 moveVec = GetMoveVec();
 //
 //    //移動処理
-//    Move(moveVec.x, moveVec.z, moveSpeed);
+//    //Move(moveVec.x, moveVec.z, moveSpeed);
 //
 //    //旋回処理
-//    Turn(elapsedTime, moveVec.x, moveVec.z, turnSpeed);
+//    //Turn(elapsedTime, moveVec.x, moveVec.z, turnSpeed);
 //
 //    //進行ベクトルがゼロベクトルでない場合は入力された
-//    return moveVec.x != 0.0f || moveVec.y != 0.0f || moveVec.z != 0.0f;
+//    //return moveVec.x != 0.0f || moveVec.y != 0.0f || moveVec.z != 0.0f;
 //    
 //} 
 
@@ -211,7 +201,7 @@ void Player::TransitionIdleState()
 //待機ステート更新処理
 void Player::UpdateIdleState(float elapsedTime)
 {
-    ////移動入力処理
+    //移動入力処理
     //if (InputMove(elapsedTime))
     //{
     //    // 移動ステートへ遷移
@@ -233,10 +223,10 @@ void Player::UpdateIdleState(float elapsedTime)
 //void Player::UpdateMoveState(float elapsedTime)
 //{
 //    //移動入力処理
-//    if (!InputMove(elapsedTime))
+//    /*if (!InputMove(elapsedTime))
 //    {
 //        TransitionIdleState();
-//    }
+//    }*/
 //
 //}
 

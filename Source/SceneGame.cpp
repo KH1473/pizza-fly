@@ -47,12 +47,12 @@ void SceneGame::Initialize()
 
 	//エネミー初期化
 	EnemyManager& enemyManager = EnemyManager::Instance();
-
+	
 	slime = new EnemySlime();
 	slime->SetPosition(DirectX::XMFLOAT3(2.0f, 0, 5));
 	enemyManager.Register(slime);
-
-
+	
+	
 	//ゲージスプライト
 	//gauge = new Sprite();
 
@@ -60,15 +60,18 @@ void SceneGame::Initialize()
 	Red = new Sprite(GAME_Red);
 
 	Back = new Sprite(GAME_Back);
-	
-	// スコア画面で表示されるピザのファイル名の設定
+	//Back = new Sprite(SCORE_SPRITE);
+
+
+
+		// スコア画面で表示されるピザのファイル名の設定
 	ScoreDataManager::Instance().SetPizzaModelFilename(KOGE_MODEL);
 }
 
 // 終了化
 void SceneGame::Finalize()
 {
-
+	
 	//ステージ終了化
 	StageManager::Instance().Clear();
 
@@ -95,13 +98,13 @@ void SceneGame::Finalize()
 		delete MP;
 		MP = nullptr;
 	}
-
+	
 	if (Red != nullptr)
 	{
 		delete Red;
 		Red = nullptr;
 	}
-
+	
 	if (Back != nullptr)
 	{
 		delete Back;
@@ -113,12 +116,14 @@ void SceneGame::Finalize()
 void SceneGame::Update(float elapsedTime)
 {
 	//カメラコントローラー更新処理
+	//DirectX::XMFLOAT3 target = player->GetPosition();
 	DirectX::XMFLOAT3 target = slime->GetPosition();
 	target.y += 0.5f;
 	cameraController->SetTarget(target);
 	cameraController->Update(elapsedTime);
 
 	//ステージ更新処理
+	//stage->Update(elapsedTime);
 	StageManager::Instance().Update(elapsedTime);
 
 	//プレイヤー更新処理
@@ -186,7 +191,7 @@ void SceneGame::Render()
 		//プレイヤー描画
 		player->Render(dc, shader);
 		shader->End(dc);
-
+		
 	}
 
 	//3Dエフェクト描画
@@ -196,6 +201,12 @@ void SceneGame::Render()
 
 	// 3Dデバッグ描画
 	{
+		//プレイヤーデバッグプリミティブ描画
+		//player->DrawDebugPrimitive();
+
+		// エネミーデバッグプリミティブ描画
+		//EnemyManager::Instance().DrawDebugPrimitive();
+
 		// ラインレンダラ描画実行
 		graphics.GetLineRenderer()->Render(dc, rc.view, rc.projection);
 
@@ -255,5 +266,10 @@ void SceneGame::Render()
 		}
 	}
 
+	// 2DデバッグGUI描画
+	{
+		//プレイヤーデバッグ描画
+		//player->DrawDebugGUI();
+	}
 }
 

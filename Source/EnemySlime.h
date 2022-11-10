@@ -19,6 +19,7 @@ public:
     //描画処理
     void Render(ID3D11DeviceContext* dc, Shader* shader) override;
     
+    //int scoreP = 0;
 
 private:
     Model* model = nullptr;
@@ -29,10 +30,10 @@ private:
     //高さの最小値
     float powerMin = 0.0f;
     //高さの最大値
-    float powerMax = 1000.0f;
+    float powerMax = 3000.0f;
 
     //1周あたりに加算する高さの大きさ
-    float Pizzaspeed = 1.5f;
+    float Pizzaspeed = 50.0f;
 
     //スケール増加
     float scaleup = 0.0001f;
