@@ -23,7 +23,7 @@ void SceneTitle::Initialize()
     titlebgm->Play(true);
 
     // ゲーム画面で表示されるピザのファイル名の設定
-    ScoreDataManager::Instance().SetPizzaModelFilename(PIZZAMODEL);
+    ScoreDataManager::Instance().SetPizzaModelFilename(NAMAYAKE_MODEL);
 }
 
 // 終了化

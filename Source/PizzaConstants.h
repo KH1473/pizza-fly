@@ -14,7 +14,7 @@
 
 //SceneTitle.cpp
 #define TITLE_SPRITE "Data/Sprite/Title.png" //タイトル描画
-#define PIZZAMODEL "Data/Model/pizzamodel/namayake/namayake.mdl"
+#define PIZZAMODEL "Data/Model/pizzamodel/pizza/pizza.mdl"
 
 //SceneLoading.cpp
 #define LOADING_SPRITE "Data/Sprite/LoadingIcon.png" //ローディングアイコン

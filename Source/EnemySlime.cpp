@@ -97,16 +97,11 @@ void EnemySlime::EnemyMove()
             case 3:
                 if (MousePoint == 3 && ax > 800 && ax < 950 && ay > 550 && ay < 700)
                 {
-                    if (PizzaPos <= powerMin)
-                    {
-                        PizzaPos += Pizzaspeed;
-                    }
-
-                    else if (PizzaPos > powerMax)
+                    PizzaPos += Pizzaspeed;
+               
+                    if (PizzaPos > powerMax)
                     {
                         PizzaPos -= Pizzaspeed;
-                        MousePoint = 0;
-                        state = 0;
                     }
 
                     scale.x += scaleup;
@@ -134,11 +129,13 @@ void EnemySlime::EnemyMove()
         //ƒsƒU‚ð”ò‚Î‚·
         if (!(gameMouse.GetButton() & Mouse::BTN_LEFT))
         {
-            ScoreDataManager::Instance().SetPos(position.y);
             EnemyHight();
         }
 
-        if (speed == 0) ++scoretimer;
+        if (speed == 0) {
+            ScoreDataManager::Instance().SetPos(position.y);
+            ++scoretimer;
+        }
 
         if (scoretimer > 120) SceneManager::Instance().ChangeScene(new PizzaScore);
     }

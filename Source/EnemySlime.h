@@ -30,7 +30,7 @@ private:
     //‚‚³‚ÌÅ¬’l
     float powerMin = 0.0f;
     //‚‚³‚ÌÅ‘å’l
-    float powerMax = 2000.0f;
+    float powerMax = 5000.0f;
 
     //1ü‚ ‚½‚è‚É‰ÁZ‚·‚é‚‚³‚Ì‘å‚«‚³
     float Pizzaspeed = 50.0f;
