@@ -131,11 +131,15 @@ void SceneGame::Update(float elapsedTime)
 	EffectManager::Instance().Update(elapsedTime);
 
 	// スコア画面で表示されるピザのファイル名の設定
-	if (ScoreDataManager::Instance().GetPos() < 20.0f)
+	if (ScoreDataManager::Instance().GetPos() < 1000.0f)
 	{
 		ScoreDataManager::Instance().SetPizzaModelFilename(NAMAYAKE_MODEL);
 	}
-	else if (ScoreDataManager::Instance().GetPos() >= 20.0f)
+	else if (ScoreDataManager::Instance().GetPos() >= 1000.0f && ScoreDataManager::Instance().GetPos() <= 3000.0f)
+	{
+		ScoreDataManager::Instance().SetPizzaModelFilename(PIZZAMODEL);
+	}
+	else
 	{
 		ScoreDataManager::Instance().SetPizzaModelFilename(KOGE_MODEL);
 	}
