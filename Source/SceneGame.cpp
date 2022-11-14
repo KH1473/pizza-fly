@@ -62,15 +62,7 @@ void SceneGame::Initialize()
 	gamebgm = Audio::Instance().LoadAudioSource("Data/Audio/gamebgm.wav");
 	gamebgm->Play(true);
 	
-	// スコア画面で表示されるピザのファイル名の設定
-	if (ScoreDataManager::Instance().GetPos() < 20.0f)
-	{
-		ScoreDataManager::Instance().SetPizzaModelFilename(NAMAYAKE_MODEL);
-	}
-	else if (ScoreDataManager::Instance().GetPos() >= 20.0f)
-	{
-		ScoreDataManager::Instance().SetPizzaModelFilename(KOGE_MODEL);
-	}
+	
 }
 
 // 終了化
@@ -137,6 +129,16 @@ void SceneGame::Update(float elapsedTime)
 
 	//エフェクト更新処理
 	EffectManager::Instance().Update(elapsedTime);
+
+	// スコア画面で表示されるピザのファイル名の設定
+	if (ScoreDataManager::Instance().GetPos() < 20.0f)
+	{
+		ScoreDataManager::Instance().SetPizzaModelFilename(NAMAYAKE_MODEL);
+	}
+	else if (ScoreDataManager::Instance().GetPos() >= 20.0f)
+	{
+		ScoreDataManager::Instance().SetPizzaModelFilename(KOGE_MODEL);
+	}
 
 }
 
