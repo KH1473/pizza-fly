@@ -6,6 +6,7 @@
 #include "CameraController.h"
 #include "Scene.h"
 #include "Graphics/Sprite.h"
+#include "Audio/Audio.h"
 
 // ÉQÅ[ÉÄÉVÅ[Éì
 class PizzaScore : public Scene
@@ -34,5 +35,8 @@ private:
 	Sprite* ScoreS = nullptr;
 	Sprite* ScoreA = nullptr;
 	Sprite* Back = nullptr;
+
+	std::unique_ptr<AudioSource> kogebgm = nullptr;
+	std::unique_ptr<AudioSource> clearbgm = nullptr;
 
 };

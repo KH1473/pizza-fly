@@ -52,6 +52,20 @@ void PizzaScore::Initialize()
 	ScoreA = new Sprite(SCORE_SPRITE);
 	Back = new Sprite(SCORE_SPRITE);
 
+	SceneType sceneType = SceneManager::Instance().GetSceneType();
+
+	if (ScoreDataManager::Instance().GetPos() < 20.0f)
+	{
+		clearbgm = Audio::Instance().LoadAudioSource("Data/Audio/clear.wav");
+		clearbgm->Play(true);
+	}
+	else if (ScoreDataManager::Instance().GetPos() >= 20.0f)
+	{
+		kogebgm = Audio::Instance().LoadAudioSource("Data/Audio/koge.wav");
+		kogebgm->Play(true);
+
+	}
+
 }
 
 // 終了化
@@ -105,21 +119,21 @@ void PizzaScore::Update(float elapsedTime)
 
 	//シーン操作
 	{
-		//GamePad& gamePad = Input::Instance().GetGamePad();
-		//Mouse& gameMouse = Input::Instance().GetMouse();
+		GamePad& gamePad = Input::Instance().GetGamePad();
+		Mouse& gameMouse = Input::Instance().GetMouse();
 
-		////何かボタンを押したらタイトルシーンへ切り替え
-		//const GamePadButton anyButton =
-		//	GamePad::BTN_A
-		//	| GamePad::BTN_B
-		//	| GamePad::BTN_X
-		//	| GamePad::BTN_Y;
+		//何かボタンを押したらタイトルシーンへ切り替え
+		const GamePadButton anyButton =
+			GamePad::BTN_A
+			| GamePad::BTN_B
+			| GamePad::BTN_X
+			| GamePad::BTN_Y;
 
-		//// なにかボタンを押したらタイトルシーンへ切り替え
-		//if (gamePad.GetButtonDown() & anyButton || gameMouse.GetButtonDown() & Mouse::BTN_LEFT)
-		//{
-		//	SceneManager::Instance().ChangeScene(new SceneTitle);
-		//}
+		// なにかボタンを押したらタイトルシーンへ切り替え
+		if (gamePad.GetButtonDown() & anyButton || gameMouse.GetButtonDown() & Mouse::BTN_LEFT)
+		{
+			SceneManager::Instance().ChangeScene(new SceneTitle);
+		}
 	}
 
 }
@@ -195,7 +209,6 @@ void PizzaScore::Render()
 		//エネミー描画
 		EnemyManager::Instance().Render(dc, shader);
 
-
 		shader->End(dc);
 
 	}
@@ -205,13 +218,5 @@ void PizzaScore::Render()
 		EffectManager::Instance().Render(rc.view, rc.projection);
 	}
 
-	//// 3Dデバッグ描画
-	//{
-	//	// ラインレンダラ描画実行
-	//	graphics.GetLineRenderer()->Render(dc, rc.view, rc.projection);
-
-	//	// デバッグレンダラ描画実行
-	//	graphics.GetDebugRenderer()->Render(dc, rc.view, rc.projection);
-	//}
 
 }

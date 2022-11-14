@@ -7,11 +7,8 @@
 #include "Input/Input.h"
 #include "StageManager.h"
 #include "StageMain.h"
-
 #include "PizzaConstants.h"
-
 #include "ScoreDataManager.h"
-
 #include "SceneManager.h"
 
 // 初期化
@@ -51,21 +48,29 @@ void SceneGame::Initialize()
 	slime = new EnemySlime();
 	slime->SetPosition(DirectX::XMFLOAT3(2.0f, 0, 5));
 	enemyManager.Register(slime);
-	
-	
-	//ゲージスプライト
-	//gauge = new Sprite();
 
 	MP = new Sprite(GAME_MP);
 	Red = new Sprite(GAME_Red);
 
 	Back = new Sprite(GAME_Back);
-	//Back = new Sprite(SCORE_SPRITE);
-
-
-
-		// スコア画面で表示されるピザのファイル名の設定
-	ScoreDataManager::Instance().SetPizzaModelFilename(KOGE_MODEL);
+	
+	//開始音再生
+	airhornbgm = Audio::Instance().LoadAudioSource("Data/Audio/エアーホーン.wav");
+	airhornbgm->Play(false);
+	
+	//ゲーム音再生
+	gamebgm = Audio::Instance().LoadAudioSource("Data/Audio/gamebgm.wav");
+	gamebgm->Play(true);
+	
+	// スコア画面で表示されるピザのファイル名の設定
+	if (ScoreDataManager::Instance().GetPos() < 20.0f)
+	{
+		ScoreDataManager::Instance().SetPizzaModelFilename(NAMAYAKE_MODEL);
+	}
+	else if (ScoreDataManager::Instance().GetPos() >= 20.0f)
+	{
+		ScoreDataManager::Instance().SetPizzaModelFilename(KOGE_MODEL);
+	}
 }
 
 // 終了化
@@ -116,14 +121,12 @@ void SceneGame::Finalize()
 void SceneGame::Update(float elapsedTime)
 {
 	//カメラコントローラー更新処理
-	//DirectX::XMFLOAT3 target = player->GetPosition();
 	DirectX::XMFLOAT3 target = slime->GetPosition();
 	target.y += 0.5f;
 	cameraController->SetTarget(target);
 	cameraController->Update(elapsedTime);
 
 	//ステージ更新処理
-	//stage->Update(elapsedTime);
 	StageManager::Instance().Update(elapsedTime);
 
 	//プレイヤー更新処理
@@ -201,12 +204,6 @@ void SceneGame::Render()
 
 	// 3Dデバッグ描画
 	{
-		//プレイヤーデバッグプリミティブ描画
-		//player->DrawDebugPrimitive();
-
-		// エネミーデバッグプリミティブ描画
-		//EnemyManager::Instance().DrawDebugPrimitive();
-
 		// ラインレンダラ描画実行
 		graphics.GetLineRenderer()->Render(dc, rc.view, rc.projection);
 
@@ -264,12 +261,6 @@ void SceneGame::Render()
 					1, 1, 1, 1);
 			}
 		}
-	}
-
-	// 2DデバッグGUI描画
-	{
-		//プレイヤーデバッグ描画
-		//player->DrawDebugGUI();
 	}
 }
 

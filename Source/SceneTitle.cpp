@@ -18,6 +18,10 @@ void SceneTitle::Initialize()
     // スプライト初期化
     sprite = new Sprite(TITLE_SPRITE);
 
+    //タイトルのBGM再生
+    titlebgm = Audio::Instance().LoadAudioSource("Data/Audio/title.wav");
+    titlebgm->Play(true);
+
     // ゲーム画面で表示されるピザのファイル名の設定
     ScoreDataManager::Instance().SetPizzaModelFilename(PIZZAMODEL);
 }
