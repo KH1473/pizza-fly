@@ -14,6 +14,7 @@
 
 //SceneTitle.cpp
 #define TITLE_SPRITE "Data/Sprite/Title.png" //タイトル描画
+#define PIZZAMODEL "Data/Model/pizzamodel/namayake/namayake.mdl"
 
 //SceneLoading.cpp
 #define LOADING_SPRITE "Data/Sprite/LoadingIcon.png" //ローディングアイコン
@@ -28,15 +29,16 @@
 #define GAME_MP "Data/Sprite/MP.png"
 #define GAME_Red "Data/Sprite/RED.png"
 #define GAME_Back "Data/Sprite/Space.png"
+#define KOGE_MODEL "Data/Model/pizzamodel/koge/koge.mdl"
 
 //SceneScore.cpp
-#define KOGE_MODEL "Data/Model/pizzamodel/koge/koge.mdl"
 #define NAMAYAKE_MODEL "Data/Model/pizzamodel/namayake/namayake.mdl"
 #define SCORE_SPRITE "Data/Sprite/Score.png"
 #define SCORE_TEXT "Data/Font/font1.png"
 
 //EnemySlime.cpp
-#define PIZZAMODEL "Data/Model/PIZZA/PIZZA.mdl"
+//#define PIZZAMODEL "Data/Model/PIZZA/PIZZA.mdl"
+//#define PIZZAMODEL "Data/Model/pizzamodel/pizza/pizza.mdl"
 
 //Player.cpp
 #define PLAYERMODEL "Data/Model/Jammo/Jammo.mdl"
