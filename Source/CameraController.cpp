@@ -5,6 +5,8 @@
 //#include <stdlib.h>
 #include "SceneManager.h"
 
+#include "ScoreDataManager.h"
+
 //çXêVèàóù
 void CameraController::Update(float elapsedTime)
 {
@@ -25,11 +27,12 @@ void CameraController::Update(float elapsedTime)
         {
         case 0:
 
+            if (ScoreDataManager::Instance().GetPos() < 0.01f)
+            {
                 if (800 <= mouseX && mouseX < 1100 && mouseY >= 400 && mouseY < 700)
                 {
                     if (gameMouse.GetButton() & Mouse::BTN_LEFT)
                     {
-
                         if (ax >= 0.0f)
                         {
                             ax -= 1.0f;
@@ -47,15 +50,15 @@ void CameraController::Update(float elapsedTime)
                         {
                             ay -= 0.5f;
                         }
-
                     }
                     else if (gameMouse.GetButtonUp() & Mouse::BTN_LEFT)
                     {
                         cameracount++;
                     }
                 }
-            
+            }
             break;
+
         case 1:
             cameracount = 1;
             break;

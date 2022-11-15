@@ -108,8 +108,11 @@ void EnemySlime::EnemyMove()
                         PizzaPos -= pizzaRising;
                     }
 
-                    scale.x += scaleup;
-                    scale.z += scaleup;
+                    if (position.y <= 0.01f)
+                    {
+                        scale.x += scaleup;
+                        scale.z += scaleup;
+                    }
 
                     MousePoint = 0;
                     state = 0;
@@ -131,10 +134,14 @@ void EnemySlime::EnemyMove()
         }
 
         //ƒsƒU‚ð”ò‚Î‚·
-        if (!(gameMouse.GetButton() & Mouse::BTN_LEFT))
+        if ((gameMouse.GetButtonUp() & Mouse::BTN_LEFT))
+        {
+            hightTimer++;
+        }
+
+        if (hightTimer > 0)
         {
             ScoreDataManager::Instance().SetPos(position.y);
-            GameFlag == 1;
             EnemyHight();
         }
 

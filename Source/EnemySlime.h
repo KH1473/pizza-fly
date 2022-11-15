@@ -49,6 +49,8 @@ private:
     int     scoretimer = 0;
     int     GameFlag = 0;
 
+    int hightTimer = 0;
+
     //ƒsƒU‚Ì‰ñ“]‰¹
     std::unique_ptr<AudioSource> pizzaangle_bgm = nullptr;
 };

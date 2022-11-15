@@ -28,11 +28,9 @@ public:
 	void Render() override;
 
 private:
-	//Stage* stage = nullptr;
 	Player* player = nullptr;
 	EnemySlime* slime = nullptr;
 	CameraController* cameraController = nullptr;
-	//Sprite* gauge = nullptr;
 	Sprite* MP = nullptr;
 	Sprite* Red = nullptr;
 
