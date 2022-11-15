@@ -238,47 +238,52 @@ void SceneGame::Render()
 
 		float RedWidth = static_cast<float>(Red->GetTextureWidth());
 		float RedHeight = static_cast<float>(Red->GetTextureHeight());
-
-		//MPï`âÊ
-		MP->Render(dc,
-			800, 400, textureWidth, textureHeight,
-			0, 0, textureWidth, textureHeight,
-			0,
-			1, 1, 1, 1);
-
-		if (mouse.GetButton() & Mouse::BTN_LEFT)
+		
+		//çÇÇ≥Ç™0.01fà»è„Ç…Ç»Ç¡ÇΩÇÁ
+		if (ScoreDataManager::Instance().GetPos() < 0.01f)
 		{
-			if (ax >= 800 && ax <= 950 && ay >= 400 && ay <= 550)
+			//MPï`âÊ
+			MP->Render(dc,
+				800, 400, textureWidth, textureHeight,
+				0, 0, textureWidth, textureHeight,
+				0,
+				1, 1, 1, 1);
+
+			//ê‘êFÇÃéläpÇÃï`âÊ
+			if (mouse.GetButton() & Mouse::BTN_LEFT)
 			{
-				Red->Render(dc,
-					800, 400, RedWidth, RedHeight,
-					0, 0, RedWidth, RedHeight,
-					0,
-					1, 1, 1, 1);
-			}
-			else if (ax > 950 && ax < 1100 && ay > 400 && ay < 550)
-			{
-				Red->Render(dc,
-					950, 400, RedWidth, RedHeight,
-					0, 0, RedWidth, RedHeight,
-					0,
-					1, 1, 1, 1);
-			}
-			else if (ax > 950 && ax < 1100 && ay > 550 && ay < 700)
-			{
-				Red->Render(dc,
-					950, 550, RedWidth, RedHeight,
-					0, 0, RedWidth, RedHeight,
-					0,
-					1, 1, 1, 1);
-			}
-			else if (ax > 800 && ax < 950 && ay > 550 && ay < 700)
-			{
-				Red->Render(dc,
-					800, 550, RedWidth, RedHeight,
-					0, 0, RedWidth, RedHeight,
-					0,
-					1, 1, 1, 1);
+				if (ax >= 800 && ax <= 950 && ay >= 400 && ay <= 550)
+				{
+					Red->Render(dc,
+						800, 400, RedWidth, RedHeight,
+						0, 0, RedWidth, RedHeight,
+						0,
+						1, 1, 1, 1);
+				}
+				else if (ax > 950 && ax < 1100 && ay > 400 && ay < 550)
+				{
+					Red->Render(dc,
+						950, 400, RedWidth, RedHeight,
+						0, 0, RedWidth, RedHeight,
+						0,
+						1, 1, 1, 1);
+				}
+				else if (ax > 950 && ax < 1100 && ay > 550 && ay < 700)
+				{
+					Red->Render(dc,
+						950, 550, RedWidth, RedHeight,
+						0, 0, RedWidth, RedHeight,
+						0,
+						1, 1, 1, 1);
+				}
+				else if (ax > 800 && ax < 950 && ay > 550 && ay < 700)
+				{
+					Red->Render(dc,
+						800, 550, RedWidth, RedHeight,
+						0, 0, RedWidth, RedHeight,
+						0,
+						1, 1, 1, 1);
+				}
 			}
 		}
 	}
