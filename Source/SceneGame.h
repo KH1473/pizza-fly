@@ -38,6 +38,8 @@ private:
 
 	Sprite* Back = nullptr;
 
+	Sprite* text = nullptr;
+
 	std::unique_ptr<AudioSource> airhornbgm = nullptr;
 	std::unique_ptr<AudioSource> gamebgm = nullptr;
 

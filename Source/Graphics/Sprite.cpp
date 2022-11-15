@@ -374,7 +374,11 @@ void Sprite::textout(ID3D11DeviceContext* immediate_context,
 	{
 		LONG sx = c % 0x0F;
 		//文字を表示。アスキーコードの位置にある文字位置を切り抜いて表示
-		Render(immediate_context, x + carriage, y, w, h, sw * (c & 0x0F), sh * (c >> 4), sw, sh, 0, r, g, b, a);
+		Render(immediate_context, 
+			x + carriage, y, w, h,
+			sw * (c & 0x0F), sh * (c >> 4), sw, sh,
+			0,
+			r, g, b, a);
 		//文字位置を幅分ずらす
 		carriage += w;
 

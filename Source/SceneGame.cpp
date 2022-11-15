@@ -53,6 +53,8 @@ void SceneGame::Initialize()
 	Red = new Sprite(GAME_Red);
 
 	Back = new Sprite(GAME_Back);
+
+	text = new Sprite("Data/Font/font6.png");
 	
 	//開始音再生
 	airhornbgm = Audio::Instance().LoadAudioSource("Data/Audio/エアーホーン.wav");
@@ -106,6 +108,13 @@ void SceneGame::Finalize()
 	{
 		delete Back;
 		Back = nullptr;
+	}
+
+	//text終了化
+	if (text != nullptr)
+	{
+		delete text;
+		text = nullptr;
 	}
 }
 
@@ -219,6 +228,12 @@ void SceneGame::Render()
 
 	// 2Dスプライト描画
 	{
+		//ピザposition.yの数値表示
+		text->textout(dc,
+			std::to_string(ScoreDataManager::Instance().GetPos()),
+			200, 0, 96, 96,
+			1, 1, 0, 1);
+
 		float textureWidth = static_cast<float>(MP->GetTextureWidth());
 		float textureHeight = static_cast<float>(MP->GetTextureHeight());
 
