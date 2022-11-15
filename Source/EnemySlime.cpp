@@ -73,12 +73,12 @@ void EnemySlime::EnemyMove()
         int ax = gameMouse.GetPositionX();
         int ay = gameMouse.GetPositionY();
         //////////////////////////////
-        if (gameMouse.GetButton() & Mouse::BTN_LEFT)
+        if (gameMouse.GetButton() & Mouse::BTN_LEFT && GameFlag == 0)
         {
             switch (state)
             {
             case 0:
-                if (MousePoint == 0 && ax > 800 && ax < 950 && ay > 400 && ay < 550 && GameFlag == 0)
+                if (MousePoint == 0 && ax > 800 && ax < 950 && ay > 400 && ay < 550)
                 {
                     MousePoint += 1;
                     ++state;
@@ -86,20 +86,20 @@ void EnemySlime::EnemyMove()
                     pizzaangle_bgm->Play(false);
                 }
             case 1:
-                if (MousePoint == 1 && ax > 950 && ax < 1100 && ay > 400 && ay < 550 && GameFlag == 0)
+                if (MousePoint == 1 && ax > 950 && ax < 1100 && ay > 400 && ay < 550)
                 {
                     MousePoint += 1;
                     ++state;
                 }
             case 2:
-                if (MousePoint == 2 && ax > 950 && ax < 1100 && ay > 550 && ay < 700 && GameFlag == 0)
+                if (MousePoint == 2 && ax > 950 && ax < 1100 && ay > 550 && ay < 700)
                 {
 
                     MousePoint += 1;
                     ++state;
                 }
             case 3:
-                if (MousePoint == 3 && ax > 800 && ax < 950 && ay > 550 && ay < 700 && GameFlag == 0)
+                if (MousePoint == 3 && ax > 800 && ax < 950 && ay > 550 && ay < 700)
                 {
                     PizzaPos += pizzaRising;
                
