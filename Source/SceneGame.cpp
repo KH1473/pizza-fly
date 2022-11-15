@@ -70,7 +70,6 @@ void SceneGame::Initialize()
 // 終了化
 void SceneGame::Finalize()
 {
-	
 	//ステージ終了化
 	StageManager::Instance().Clear();
 

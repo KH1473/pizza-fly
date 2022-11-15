@@ -33,7 +33,7 @@ private:
     float powerMax = 5000.0f;
 
     //1周あたりに加算する高さの大きさ
-    float Pizzaspeed = 50.0f;
+    float pizzaRising = 50.00000f;
 
     //スケール増加
     float scaleup = 0.0001f;
@@ -46,7 +46,7 @@ private:
 
     int     MousePoint = 0;
     int     state = 0;
-    int scoretimer = 0;
+    int     scoretimer = 0;
 
     //ピザの回転音
     std::unique_ptr<AudioSource> pizzaangle_bgm = nullptr;

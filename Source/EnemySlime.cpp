@@ -102,11 +102,11 @@ void EnemySlime::EnemyMove()
             case 3:
                 if (MousePoint == 3 && ax > 800 && ax < 950 && ay > 550 && ay < 700)
                 {
-                    PizzaPos += Pizzaspeed;
+                    PizzaPos += pizzaRising;
                
                     if (PizzaPos > powerMax)
                     {
-                        PizzaPos -= Pizzaspeed;
+                        PizzaPos -= pizzaRising;
                     }
 
                     scale.x += scaleup;
@@ -153,8 +153,6 @@ void EnemySlime::EnemyMove()
 
 void EnemySlime::EnemyHight()
 {
-
-
     //position‚Éspeed‚ğ‘«‚·
     if (PizzaPos > 0.0f)
     {
@@ -167,7 +165,6 @@ void EnemySlime::EnemyHight()
 
         scaleup = 0;
     }
-
 }
 
 //•`‰æˆ—
