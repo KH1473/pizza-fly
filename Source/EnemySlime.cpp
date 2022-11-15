@@ -29,12 +29,15 @@ EnemySlime::EnemySlime()
     else if (sceneType == SceneType::Score)
     {
         //モデルが大きいのでスケーリング
-        scale.x = scale.y = scale.z = 0.007f;
+        scale.x = scale.y = scale.z = 0.005f;
     }
 
     //幅、高さ設定
     radius = 0.5f;
     height = 1.0f;
+
+    //ピザの回転音
+    pizzaangle_bgm = Audio::Instance().LoadAudioSource("Data/Audio/pizza回転.wav");
 }
 
 //デストラクタ
@@ -80,6 +83,8 @@ void EnemySlime::EnemyMove()
                 {
                     MousePoint += 1;
                     ++state;
+                    
+                    pizzaangle_bgm->Play(false);
                 }
             case 1:
                 if (MousePoint == 1 && ax > 950 && ax < 1100 && ay > 400 && ay < 550)

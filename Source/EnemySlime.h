@@ -2,6 +2,8 @@
 
 #include "Graphics/Model.h"
 #include "Enemy.h"
+#include "Audio/Audio.h"
+
 //スライム
 class EnemySlime : public Enemy
 {
@@ -19,8 +21,6 @@ public:
     //描画処理
     void Render(ID3D11DeviceContext* dc, Shader* shader) override;
     
-    //int scoreP = 0;
-
 private:
     Model* model = nullptr;
     
@@ -47,4 +47,7 @@ private:
     int     MousePoint = 0;
     int     state = 0;
     int scoretimer = 0;
+
+    //ピザの回転音
+    std::unique_ptr<AudioSource> pizzaangle_bgm = nullptr;
 };
