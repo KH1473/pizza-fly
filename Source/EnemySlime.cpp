@@ -44,7 +44,6 @@ EnemySlime::EnemySlime()
 EnemySlime::~EnemySlime()
 {
     delete model;
-    
 }
 
 //XVˆ—
@@ -79,7 +78,7 @@ void EnemySlime::EnemyMove()
             switch (state)
             {
             case 0:
-                if (MousePoint == 0 && ax > 800 && ax < 950 && ay > 400 && ay < 550)
+                if (MousePoint == 0 && ax > 800 && ax < 950 && ay > 400 && ay < 550 && GameFlag == 0)
                 {
                     MousePoint += 1;
                     ++state;
@@ -87,20 +86,20 @@ void EnemySlime::EnemyMove()
                     pizzaangle_bgm->Play(false);
                 }
             case 1:
-                if (MousePoint == 1 && ax > 950 && ax < 1100 && ay > 400 && ay < 550)
+                if (MousePoint == 1 && ax > 950 && ax < 1100 && ay > 400 && ay < 550 && GameFlag == 0)
                 {
                     MousePoint += 1;
                     ++state;
                 }
             case 2:
-                if (MousePoint == 2 && ax > 950 && ax < 1100 && ay > 550 && ay < 700)
+                if (MousePoint == 2 && ax > 950 && ax < 1100 && ay > 550 && ay < 700 && GameFlag == 0)
                 {
 
                     MousePoint += 1;
                     ++state;
                 }
             case 3:
-                if (MousePoint == 3 && ax > 800 && ax < 950 && ay > 550 && ay < 700)
+                if (MousePoint == 3 && ax > 800 && ax < 950 && ay > 550 && ay < 700 && GameFlag == 0)
                 {
                     PizzaPos += pizzaRising;
                
@@ -135,6 +134,7 @@ void EnemySlime::EnemyMove()
         if (!(gameMouse.GetButton() & Mouse::BTN_LEFT))
         {
             ScoreDataManager::Instance().SetPos(position.y);
+            GameFlag == 1;
             EnemyHight();
         }
 

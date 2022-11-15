@@ -47,6 +47,7 @@ private:
     int     MousePoint = 0;
     int     state = 0;
     int     scoretimer = 0;
+    int     GameFlag = 0;
 
     //ƒsƒU‚Ì‰ñ“]‰¹
     std::unique_ptr<AudioSource> pizzaangle_bgm = nullptr;
