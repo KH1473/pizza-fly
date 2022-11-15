@@ -42,7 +42,7 @@ private:
     float scaleMax = 0.1f;
     
     //”ò‚Ô‘¬‚³
-    float speed = 0.5f;
+    float speed = 0.51213f;
 
     int     MousePoint = 0;
     int     state = 0;
