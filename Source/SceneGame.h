@@ -31,12 +31,12 @@ private:
 	Player* player = nullptr;
 	EnemySlime* slime = nullptr;
 	CameraController* cameraController = nullptr;
+	
 	Sprite* MP = nullptr;
 	Sprite* Red = nullptr;
-
 	Sprite* Back = nullptr;
-
 	Sprite* text = nullptr;
+	Sprite* timerText = nullptr;
 
 	std::unique_ptr<AudioSource> airhornbgm = nullptr;
 	std::unique_ptr<AudioSource> gamebgm = nullptr;

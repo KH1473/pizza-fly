@@ -55,7 +55,8 @@ void SceneGame::Initialize()
 	Back = new Sprite(GAME_Back);
 
 	text = new Sprite("Data/Font/font6.png");
-	
+	timerText = new Sprite("Data/Font/font6.png");
+
 	//開始音再生
 	airhornbgm = Audio::Instance().LoadAudioSource("Data/Audio/エアーホーン.wav");
 	airhornbgm->Play(false);
@@ -114,6 +115,12 @@ void SceneGame::Finalize()
 	{
 		delete text;
 		text = nullptr;
+	}
+
+	if (timerText != nullptr)
+	{
+		delete timerText;
+		timerText = nullptr;
 	}
 }
 
@@ -219,10 +226,10 @@ void SceneGame::Render()
 	// 3Dデバッグ描画
 	{
 		// ラインレンダラ描画実行
-		graphics.GetLineRenderer()->Render(dc, rc.view, rc.projection);
+		//graphics.GetLineRenderer()->Render(dc, rc.view, rc.projection);
 
 		// デバッグレンダラ描画実行
-		graphics.GetDebugRenderer()->Render(dc, rc.view, rc.projection);
+		//graphics.GetDebugRenderer()->Render(dc, rc.view, rc.projection);
 	}
 
 	// 2Dスプライト描画
@@ -232,6 +239,11 @@ void SceneGame::Render()
 			std::to_string(ScoreDataManager::Instance().GetPos()),
 			200, 0, 96, 96,
 			1, 1, 0, 1);
+
+		timerText->textout(dc,
+			std::to_string(ScoreDataManager::Instance().GetTimer()),
+			900, 300, 96, 96,
+			1, 1, 1, 1);
 
 		float textureWidth = static_cast<float>(MP->GetTextureWidth());
 		float textureHeight = static_cast<float>(MP->GetTextureHeight());

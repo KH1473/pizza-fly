@@ -38,6 +38,9 @@ EnemySlime::EnemySlime()
     radius = 0.5f;
     height = 1.0f;
 
+    //Effect
+    Barrier = new Effect("Data/Effect/barrier/barrier.efkefc");
+
     //ピザの回転音
     pizzaangle_bgm = Audio::Instance().LoadAudioSource("Data/Audio/pizza回転.wav");
 }
@@ -46,6 +49,12 @@ EnemySlime::EnemySlime()
 EnemySlime::~EnemySlime()
 {
     delete model;
+
+    if (Barrier != nullptr)
+    {
+        delete Barrier;
+        Barrier = nullptr;
+    }
 }
 
 //更新処理
@@ -60,13 +69,15 @@ void EnemySlime::Update(float elapsedTime)
     //モデル行列更新
     model->UpdateTransform(transform);
     
-   EnemyMove();
+   EnemyMove(elapsedTime);
 
 }
 
-void EnemySlime::EnemyMove()
+void EnemySlime::EnemyMove(float elapsedTime)
 {
     SceneType sceneType = SceneManager::Instance().GetSceneType();
+    
+    ScoreDataManager::Instance().SetTimer(angleTimer);
 
     if (sceneType == SceneType::Main)
     {
@@ -104,11 +115,6 @@ void EnemySlime::EnemyMove()
                 if (MousePoint == 3 && ax > 800 && ax < 950 && ay > 550 && ay < 700)
                 {
                     PizzaPos += pizzaRising;
-               
-                    if (PizzaPos > powerMax)
-                    {
-                        PizzaPos -= pizzaRising;
-                    }
 
                     if (position.y <= 0.01f)
                     {
@@ -133,23 +139,31 @@ void EnemySlime::EnemyMove()
                 }
             }
 
+            angleTimer -= elapsedTime;
         }
 
         //ピザを飛ばす
-        if ((gameMouse.GetButtonUp() & Mouse::BTN_LEFT))
+        if(angleTimer < 0.5f)
         {
+            angleTimer = 0.0f;
             hightTimer++;
         }
 
         if (hightTimer > 0)
         {
             ScoreDataManager::Instance().SetPos(position.y);
+            ScoreDataManager::Instance().SetScale(scale);
             EnemyHight();
         }
 
         if (speed == 0) {
             ScoreDataManager::Instance().SetPos(position.y);
+            ScoreDataManager::Instance().SetScale(scale);
             ++scoretimer;
+
+            gameend = Audio::Instance().LoadAudioSource("Data/Audio/game_end.wav");
+            if (scoretimer < 60)
+            gameend->Play(false);
         }
 
         if (scoretimer > 120) SceneManager::Instance().ChangeScene(new PizzaScore);
@@ -165,6 +179,12 @@ void EnemySlime::EnemyHight()
         position.y += speed;
     }
 
+    DirectX::XMFLOAT3 effectplay = position;
+    if (position.y > 30.0f)
+    {
+        Barrier->Play(effectplay);
+    }
+    
     if (position.y >= PizzaPos && PizzaPos != 0.0f)
     {
         speed = 0;

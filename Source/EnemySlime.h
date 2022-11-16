@@ -2,6 +2,7 @@
 
 #include "Graphics/Model.h"
 #include "Enemy.h"
+#include "Effect.h"
 #include "Audio/Audio.h"
 
 //スライム
@@ -14,7 +15,7 @@ public:
     //更新処理
     void Update(float elapsedTime) override;
 
-    void EnemyMove();
+    void EnemyMove(float elapsedTime);
 
     void EnemyHight();
     
@@ -30,7 +31,7 @@ private:
     //高さの最小値
     float powerMin = 0.0f;
     //高さの最大値
-    float powerMax = 5000.0f;
+    //float powerMax = 5000.0f;
 
     //1周あたりに加算する高さの大きさ
     float pizzaRising = 50.00000f;
@@ -49,8 +50,13 @@ private:
     int     scoretimer = 0;
     int     GameFlag = 0;
 
+    float angleTimer = 3.0f;
+
     int hightTimer = 0;
+
+    Effect* Barrier = nullptr;
 
     //ピザの回転音
     std::unique_ptr<AudioSource> pizzaangle_bgm = nullptr;
+    std::unique_ptr<AudioSource> gameend = nullptr;
 };

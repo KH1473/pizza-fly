@@ -57,10 +57,28 @@ void CameraController::Update(float elapsedTime)
                     }
                 }
             }
-            break;
-
+            
         case 1:
-            cameracount = 1;
+            if (ScoreDataManager::Instance().GetPos() > 5.0f)
+            {
+                if (ax >= 0.0f)
+                {
+                    ax -= 0.5f;
+                }
+                else if (ax <= -10.0f)
+                {
+                    ax += 0.5f;
+                }
+
+                if (ay <= 0.0f)
+                {
+                    ay += 0.5f;
+                }
+                else if (ay >= 5.0f)
+                {
+                    ay -= 0.5f;
+                }
+            }
             break;
         }
     }
