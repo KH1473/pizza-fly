@@ -54,6 +54,8 @@ void PizzaScore::Initialize()
 
 	SceneType sceneType = SceneManager::Instance().GetSceneType();
 
+	ScoreDataManager::Instance().GetScale();
+
 	if (ScoreDataManager::Instance().GetPos() < 20.0f)
 	{
 		clearbgm = Audio::Instance().LoadAudioSource("Data/Audio/clear.wav");

@@ -25,10 +25,12 @@ EnemySlime::EnemySlime()
     {
         //モデルが大きいのでスケーリング
         scale.x = scale.y = scale.z = 0.001f;
+        ScoreDataManager::Instance().SetScale(scale);
     }
     else if (sceneType == SceneType::Score)
     {
-        //モデルが大きいのでスケーリング
+        //scale値保存       
+        ScoreDataManager::Instance().GetScale();
         scale.x = scale.y = scale.z = 0.005f;
     }
 
@@ -152,10 +154,7 @@ void EnemySlime::EnemyMove()
 
         if (scoretimer > 120) SceneManager::Instance().ChangeScene(new PizzaScore);
     }
-    else if (sceneType == SceneType::Score)
-    {
-
-    }
+    
 }
 
 void EnemySlime::EnemyHight()
