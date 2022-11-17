@@ -9,7 +9,7 @@
   //参考に"Data/Effect/03_Hanmado01/attack.efk"を入れてます
 
 //StageMain.cpp
-#define STAGE_MODEL "Data/Model/ExampleStage/ExampleStage.mdl"  //ステージモデル
+#define STAGE_MODEL "Data/Model/map1/map1.mdl"  //ステージモデル
 #define STAGE_OTHER_ERIA "Data/Model/Cylinder/Cylinder.mdl"  //ステージモデル
 
 //SceneTitle.cpp
