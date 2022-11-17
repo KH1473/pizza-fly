@@ -55,6 +55,7 @@ private:
     int hightTimer = 0;
 
     Effect* Barrier = nullptr;
+    Effect* Fire = nullptr;
 
     //ƒsƒU‚Ì‰ñ“]‰¹
     std::unique_ptr<AudioSource> pizzaangle_bgm = nullptr;

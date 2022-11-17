@@ -40,6 +40,7 @@ EnemySlime::EnemySlime()
 
     //Effect
     Barrier = new Effect("Data/Effect/barrier/barrier.efkefc");
+    Fire = new Effect("Data/Effect/Fire/fire2.efkefc");
 
     //ƒsƒU‚Ì‰ñ“]‰¹
     pizzaangle_bgm = Audio::Instance().LoadAudioSource("Data/Audio/pizza‰ñ“].wav");
@@ -49,6 +50,12 @@ EnemySlime::EnemySlime()
 EnemySlime::~EnemySlime()
 {
     delete model;
+
+    if (Fire != nullptr)
+    {
+        delete Fire;
+        Fire = nullptr;
+    }
 
     if (Barrier != nullptr)
     {
@@ -97,6 +104,10 @@ void EnemySlime::EnemyMove(float elapsedTime)
                     ++state;
                     
                     pizzaangle_bgm->Play(false);
+
+                    DirectX::XMFLOAT3 effectplay = position;
+                    //effectplay.y += position.y * 0.5f;
+                    Fire->Play(effectplay);
                 }
             case 1:
                 if (MousePoint == 1 && ax > 950 && ax < 1100 && ay > 400 && ay < 550)
