@@ -37,7 +37,7 @@ private:
     float pizzaRising = 50.00000f;
 
     //スケール増加
-    float scaleup = 0.0001f;
+    float scaleup = 0.0005f;
 
     //スケールの最大値
     float scaleMax = 0.1f;
