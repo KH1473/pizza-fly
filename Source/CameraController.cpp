@@ -23,59 +23,60 @@ void CameraController::Update(float elapsedTime)
 
     if (sceneType == SceneType::Main)
     {
-        if(cameracount == 0)
+        if (cameracount == 0)
         {
-            if (ScoreDataManager::Instance().GetPos() < 0.01f)
-            {
-                if (800 <= mouseX && mouseX < 1100 && mouseY >= 400 && mouseY < 700)
-                {
-                    if (gameMouse.GetButton() & Mouse::BTN_LEFT)
-                    {
-                        if (ax >= 0.0f)
-                        {
-                            ax -= 1.0f;
-                        }
-                        else if (ax <= -10.0f)
-                        {
-                            ax += 1.0f;
-                        }
 
-                        if (ay <= 0.0f)
-                        {
-                            ay += 0.5f;
-                        }
-                        else if (ay >= 5.0f)
-                        {
-                            ay -= 0.5f;
-                        }
-                    }
-                    else if (gameMouse.GetButtonUp() & Mouse::BTN_LEFT)
+            if (800 <= mouseX && mouseX < 1100 && mouseY >= 400 && mouseY < 700)
+            {
+                if (gameMouse.GetButton() & Mouse::BTN_LEFT)
+                {
+                    if (ax >= 0.0f)
                     {
-                        cameracount = 1;
+                        ax -= 1.0f;
+                    }
+                    else if (ax <= -10.0f)
+                    {
+                        ax += 1.0f;
+                    }
+
+                    if (ay <= 0.0f)
+                    {
+                        ay += 0.5f;
+                    }
+                    else if (ay >= 5.0f)
+                    {
+                        ay -= 0.5f;
                     }
                 }
-            }   
-            else if (cameracount == 1)
-            {
-                if (ax >= 0.0f)
-                {
-                    ax -= 0.5f;
-                }
-                else if (ax <= -10.0f)
-                {
-                    ax += 0.5f;
-                }
 
-                if (ay <= 0.0f)
-                {
-                    ay += 0.5f;
-                }
-                else if (ay >= 5.0f)
-                {
-                    ay -= 0.5f;
-                }
+            }
+
+            if (gameMouse.GetButtonUp() & Mouse::BTN_LEFT)
+            {
+                cameracount++;
             }
         }
+        else if (cameracount >= 1)
+        {
+            if (ax >= 0.0f)
+            {
+                ax -= 0.5f;
+            }
+            else if (ax <= -10.0f)
+            {
+                ax += 0.5f;
+            }
+
+            if (ay <= 0.0f)
+            {
+                ay += 0.5f;
+            }
+            else if (ay >= 5.0f)
+            {
+                ay -= 0.5f;
+            }
+        }
+        
     }
     else if (sceneType == SceneType::Score)
     {
