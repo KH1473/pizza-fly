@@ -179,7 +179,7 @@ void EnemySlime::EnemyMove(float elapsedTime)
 
         if (scoretimer > 120) SceneManager::Instance().ChangeScene(new PizzaScore);
     }
-    
+   
 }
 
 void EnemySlime::EnemyHight()
