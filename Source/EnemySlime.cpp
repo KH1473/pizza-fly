@@ -127,7 +127,7 @@ void EnemySlime::EnemyMove(float elapsedTime)
                 {
                     PizzaPos += pizzaRising;
 
-                    if (position.y <= 0.01f)
+                    if (position.y <= 2.0f)
                     {
                         scale.x += scaleup;
                         scale.z += scaleup;
