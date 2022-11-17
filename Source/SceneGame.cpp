@@ -251,9 +251,6 @@ void SceneGame::Render()
 		float RedWidth = static_cast<float>(Red->GetTextureWidth());
 		float RedHeight = static_cast<float>(Red->GetTextureHeight());
 		
-		//çÇÇ≥Ç™0.01fà»è„Ç…Ç»Ç¡ÇΩÇÁ
-		if (ScoreDataManager::Instance().GetPos() < 0.01f)
-		{
 			//MPï`âÊ
 			MP->Render(dc,
 				800, 400, textureWidth, textureHeight,
@@ -297,7 +294,6 @@ void SceneGame::Render()
 						1, 1, 1, 1);
 				}
 			}
-		}
 	}
 }
 
