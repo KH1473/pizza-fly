@@ -48,9 +48,22 @@ void PizzaScore::Initialize()
 
 
 	// スプライト初期化
-	ScoreS = new Sprite(SCORE_SPRITE);
-	ScoreA = new Sprite(SCORE_SPRITE);
 	Back = new Sprite(SCORE_SPRITE);
+
+	//結果文字表示
+	if (ScoreDataManager::Instance().GetPizzaModelFilename() == PIZZAMODEL)
+	{
+		PizzaRank = new Sprite("Data/Sprite/PizzaRank/normal.png");
+	}
+	else if (ScoreDataManager::Instance().GetPizzaModelFilename() == KOGE_MODEL)
+	{
+		PizzaRank = new Sprite("Data/Sprite/PizzaRank/koge.png");
+	}
+	else
+	{
+		PizzaRank = new Sprite("Data/Sprite/PizzaRank/nama.png");
+	}
+
 
 	SceneType sceneType = SceneManager::Instance().GetSceneType();
 
@@ -83,24 +96,16 @@ void PizzaScore::Finalize()
 	//エネミー終了化
 	EnemyManager::Instance().Clear();
 
-
-	// スプライト終了化
-	if (ScoreS != nullptr)
-	{
-		delete ScoreS;
-		ScoreS = nullptr;
-	}
-
-	if (ScoreA != nullptr)
-	{
-		delete ScoreA;
-		ScoreA = nullptr;
-	}
-
 	if (Back != nullptr)
 	{
 		delete Back;
 		Back = nullptr;
+	}
+
+	if (PizzaRank != nullptr)
+	{
+		delete PizzaRank;
+		PizzaRank = nullptr;
 	}
 }
 
@@ -180,28 +185,16 @@ void PizzaScore::Render()
 			0,
 			1, 1, 1, 1);
 
-		/*float screenWidth = static_cast<float>(graphics.GetScreenWidth());
+		float screenWidth = static_cast<float>(graphics.GetScreenWidth());
 		float screenHeight = static_cast<float>(graphics.GetScreenHeight());
-		float textureWidth = static_cast<float>(ScoreS->GetTextureWidth());
-		float textureHeight = static_cast<float>(ScoreS->GetTextureHeight());
+		float textureWidth = static_cast<float>(PizzaRank->GetTextureWidth());
+		float textureHeight = static_cast<float>(PizzaRank->GetTextureHeight());
 
-
-		if (ScoreDataManager::Instance().GetPos() < 20.0f)
-		{
-			ScoreA->Render(dc,
-				0, 0, screenWidth, screenHeight,
-				0, 0, textureWidth, textureHeight,
-				0,
-				1, 1, 1, 1);
-		}
-		else if (ScoreDataManager::Instance().GetPos() >= 20.0f)
-		{
-			ScoreS->Render(dc,
-				0, 0, screenWidth, screenHeight,
-				0, 0, textureWidth, textureHeight,
-				0,
-				1, 1, 1, 1);
-		}*/
+		PizzaRank->Render(dc,
+			0, -180, screenWidth, screenHeight,
+			0, 0, textureWidth, textureHeight,
+			0,
+			1, 1, 1, 1);
 	}
 
 	// 3Dモデル描画

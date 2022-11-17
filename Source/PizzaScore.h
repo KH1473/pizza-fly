@@ -32,8 +32,7 @@ private:
 	EnemySlime* slime = nullptr;
 	CameraController* cameraController = nullptr;
 	
-	Sprite* ScoreS = nullptr;
-	Sprite* ScoreA = nullptr;
+	Sprite* PizzaRank = nullptr;
 	Sprite* Back = nullptr;
 
 	std::unique_ptr<AudioSource> kogebgm = nullptr;
