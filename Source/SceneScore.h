@@ -25,7 +25,6 @@ public:
 
 private:
    
-    Sprite* ScoreS = nullptr;
-    Sprite* ScoreA = nullptr;
-
+    Sprite* Score = nullptr;
+    Sprite* PizzaRank = nullptr;
 };

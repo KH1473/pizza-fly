@@ -31,25 +31,36 @@ void SceneScore::Initialize()
     );
 
     // スプライト初期化
-    ScoreS = new Sprite(SCORE_SPRITE);
-    ScoreA = new Sprite(SCORE_SPRITE);
+    Score = new Sprite(SCORE_SPRITE);
 
+    if (ScoreDataManager::Instance().GetPizzaModelFilename() == KOGE_MODEL)
+    {
+        PizzaRank = new Sprite("Data/Sprite/PizzaRank/prank1.png");
+    }
+    else if (ScoreDataManager::Instance().GetPizzaModelFilename() == NAMAYAKE_MODEL)
+    {
+        PizzaRank = new Sprite("Data/Sprite/PizzaRank/prank2.png");
+    }
+    else if (ScoreDataManager::Instance().GetPizzaModelFilename() == PIZZAMODEL)
+    {
+        PizzaRank = new Sprite("Data/Sprite/PizzaRank/prank3.png");
+    }
 }
 
 // 終了化
 void SceneScore::Finalize()
 {
     // スプライト終了化
-    if (ScoreS != nullptr)
+    if (Score != nullptr)
     {
-        delete ScoreS;
-        ScoreS = nullptr;
+        delete Score;
+        Score = nullptr;
     }
 
-    if (ScoreA != nullptr)
+    if (PizzaRank != nullptr)
     {
-        delete ScoreA;
-        ScoreA = nullptr;
+        delete PizzaRank;
+        PizzaRank = nullptr;
     }
 }
 
@@ -93,29 +104,25 @@ void SceneScore::Render()
     {
         float screenWidth = static_cast<float>(graphics.GetScreenWidth());
         float screenHeight = static_cast<float>(graphics.GetScreenHeight());
-        float textureWidth = static_cast<float>(ScoreS->GetTextureWidth());
-        float textureHeight = static_cast<float>(ScoreS->GetTextureHeight());
+        float textureWidth = static_cast<float>(Score->GetTextureWidth());
+        float textureHeight = static_cast<float>(Score->GetTextureHeight());
 
 
-        if (ScoreDataManager::Instance().GetPos() < 20.0f)
-        {
-            ScoreA->Render(dc,
+            Score->Render(dc,
                 0, 0, screenWidth, screenHeight,
                 0, 0, textureWidth, textureHeight,
                 0,
                 1, 1, 1, 1);
-        }
-        else if (ScoreDataManager::Instance().GetPos() >= 20.0f)
-        {
-            ScoreS->Render(dc,
-                0, 0, screenWidth, screenHeight,
-                0, 0, textureWidth, textureHeight,
+
+
+          float PizzaRankWidth = static_cast<float>(PizzaRank->GetTextureWidth());
+          float PizzaRankHeight = static_cast<float>(PizzaRank->GetTextureHeight());
+
+            PizzaRank->Render(dc,
+                0, 0, PizzaRankWidth, PizzaRankHeight,
+                0, 0, PizzaRankWidth, PizzaRankHeight,
                 0,
                 1, 1, 1, 1);
-        }
-
     }
-
-    
 
 }
