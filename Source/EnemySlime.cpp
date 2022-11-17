@@ -143,7 +143,7 @@ void EnemySlime::EnemyMove(float elapsedTime)
         }
 
         //ƒsƒU‚ð”ò‚Î‚·
-        if(angleTimer < 0.5f)
+        if(angleTimer < 0.0f)
         {
             angleTimer = 0.0f;
             hightTimer++;

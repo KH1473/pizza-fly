@@ -255,6 +255,7 @@ void SceneGame::Render()
 		if (ScoreDataManager::Instance().GetPos() < 0.01f)
 		{
 			//MP•`‰æ
+			if(ScoreDataManager::Instance().GetTimer() > 0.0f)
 			MP->Render(dc,
 				800, 400, textureWidth, textureHeight,
 				0, 0, textureWidth, textureHeight,
