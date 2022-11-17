@@ -96,7 +96,7 @@ void Framework::CalculateFrameStats()
 		float mspf = 1000.0f / fps;
 		std::ostringstream outs;
 		outs.precision(6);
-		outs << " Mouse.X : " << ax << " Mouse.Y : " << ay;
+		outs << " Pizza Fly ";
 		SetWindowTextA(hWnd, outs.str().c_str());
 
 		// Reset for next average.
