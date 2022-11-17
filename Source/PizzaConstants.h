@@ -41,5 +41,5 @@
 //#define PIZZAMODEL "Data/Model/pizzamodel/pizza/pizza.mdl"
 
 //Player.cpp
-#define PLAYERMODEL "Data/Model/Jammo/Jammo.mdl"
+#define PLAYERMODEL "Data/Model/chr/chr.mdl"
 #define DEBUG_EFFECT "Data/Effect/Hit.efk"

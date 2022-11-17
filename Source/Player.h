@@ -27,11 +27,11 @@ private:
     enum Animation
     {
         Anim_Attack,
+        Anim_Idle,
         Anim_Death,
         Anim_Falling,
         Anim_Gethit1,
         Anim_Gethit2,
-        Anim_Idle,
         Anim_Jump,
         Anim_Jump_Flip,
         Anim_Landing,
